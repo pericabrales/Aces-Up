@@ -18,7 +18,7 @@ public class Game {
         // initialize a new game such that each column can store cards
     }
 
-    public void buildDeck() {
+    public void buildingDeck() {
         for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
             deck.add(new Card(i,Suit.Hearts));
