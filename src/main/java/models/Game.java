@@ -27,7 +27,7 @@ public class Game {
         }
     }
 
-    public void shuffle() {
+    public void shuffling() {
         // shuffles the deck so that it is random
     }
 
