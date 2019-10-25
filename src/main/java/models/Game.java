@@ -39,10 +39,20 @@ public class Game {
         // remove the top card from the indicated column
     }
 
+
+    // Kate added to this function
     private boolean columnHasCards(int columnNumber) {
         // check indicated column for number of cards; if no cards return false, otherwise return true
-        return false;
+        if(cols.get(columnNumber).isEmpty()) {
+            System.out.println("This column is empty, a card can be moved here")
+            return true;
+        }
+        else {
+            System.out.println("This column is not empty, a card can not be moved here")
+            return false;
+        }
     }
+
 
     private Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
