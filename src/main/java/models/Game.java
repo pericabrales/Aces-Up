@@ -62,7 +62,14 @@ public class Game {
     }
 
     private boolean columnHasCards(int columnNumber) {
-        
+        if(cols.get(columnNumber).isEmpty()) {
+            System.out.println("This column is empty, a card can be moved here");
+            return true;
+        }
+        else {
+            System.out.println("This column is not empty, a card can not be moved here");
+            return false;
+        }
     }
 
     private Card getTopCard(int columnNumber) {
