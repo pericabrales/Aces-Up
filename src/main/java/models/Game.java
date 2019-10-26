@@ -28,6 +28,11 @@ public class Game {
     }
 
     public void shuffle() {
+        Collections.shuffle(deck);
+       // System.out.println("Results after shuffle operation:");
+//        for(Card str: deck){
+//            System.out.println(str);
+//        }
         // shuffles the deck so that it is random
     }
 
