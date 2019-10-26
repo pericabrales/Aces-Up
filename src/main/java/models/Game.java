@@ -16,6 +16,8 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
+
+
     }
 
     //Main should be somewhere in here, but not sure if before or after public Game()
@@ -41,15 +43,29 @@ public class Game {
         // shuffles the deck so that it is random
     }
 
+    // check if there are cards in the deck
+
+    public boolean deckHasCards(){
+        return !this.deck.isEmpty();
+    }
+
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+        for(int i=0; i<4; ){
+            //check if the deck is empty
+            if(deck.deckHasCards()){
+                //each column of 4 gets a card
+               cols.get(i).addCardToCol(deck.get(deck.size()-1));
+               //remove the card from the size of the deck
+               deck.remove(deck.size()-1);
+            }
+        }
     }
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
     }
 
-    // Kate added to this function
     private boolean columnHasCards(int columnNumber) {
         if(cols.get(columnNumber).isEmpty()) {
             System.out.println("This column is empty, a card can be moved here");
