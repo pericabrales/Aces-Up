@@ -27,10 +27,8 @@ public class Game {
         //shuffle();
         //put 4 cards in the column arraylist
         //dealFour();
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
+        //makes Game
+        
     }
 
     public void buildDeck() {
