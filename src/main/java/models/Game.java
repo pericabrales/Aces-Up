@@ -41,16 +41,17 @@ public class Game {
     // check if there are cards in the deck
 
     public boolean deckHasCards(){
-        return !this.deck.isEmpty();
+        return (!this.deck.isEmpty());
     }
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        for(int i=0; i<4; ){
+        for(int i=0; i<4; i++){
             //check if the deck is empty
-            if(deck.deckHasCards()){
+            //if(deck.deckHasCards()){
+            if(deckHasCards()){
                 //each column of 4 gets a card
-               cols.get(i).addCardToCol(deck.get(deck.size()-1));
+                addCardToCol(i, deck.get(deck.size()-1));
                //remove the card from the size of the deck
                deck.remove(deck.size()-1);
             }
@@ -72,7 +73,7 @@ public class Game {
         }
     }
 
-    private Card getTopCard(int columnNumber) {
+    public Card getTopCard(int columnNumber) {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
@@ -81,11 +82,11 @@ public class Game {
         // remove the top card from the columnFrom column, add it to the columnTo column
     }
 
-    private void addCardToCol(int columnTo, Card cardToMove) {
+    public void addCardToCol(int columnTo, Card cardToMove) {
         cols.get(columnTo).add(cardToMove);
     }
 
-    private void removeCardFromCol(int colFrom) {
+    public void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
 
@@ -104,14 +105,14 @@ public class Game {
     public boolean moreCardsSameSuit(int colNum){
         //trying to get the suit of the card at the given column number
         //not sure if this is how you do it, but it got mad at me when I tried to do one less .get()
-        Card currCard = cols.getTopCard(colNum);
+        Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
 
         int sameSuit = 0;
 
         //loop through the columns to make sure there is more than one card with this suit
         for(int i = 0; i < cols.size(); i++){
-            Card loopCard = cols.getTopCard(i);
+            Card loopCard = getTopCard(i);
             String currSuit = loopCard.getSuit().toString();
 
             //if there are more cards with the same suit, then add to the counter
@@ -132,7 +133,7 @@ public class Game {
     //check if given column number houses the smallest card
     public boolean smallestCard (int colNum){
         //get the suit from the card in the given column
-        Card currCard = cols.getTopCard(colNum);
+        Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
 
         //get value of given card
@@ -140,7 +141,7 @@ public class Game {
 
         //loop through the columns to see if the card is smaller than any other cards with its suit
         for(int i = 0; i < cols.size(); i++){
-            Card loopCard = cols.getTopCard(i);
+            Card loopCard = getTopCard(i);
             String currSuit = loopCard.getSuit().toString();
             int currVal = loopCard.getValue();
 
