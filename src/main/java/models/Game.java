@@ -17,7 +17,9 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
-
+        for(int i=0; i<4; i++){
+            cols.add(new ArrayList<Card>());
+        }
         //create the deck
         buildDeck();
         System.out.println("Created the deck");
@@ -25,7 +27,6 @@ public class Game {
         shuffle();
         //put 4 cards in the column arraylist
         dealFour();
-
     }
 
     public void buildDeck() {
@@ -72,6 +73,12 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        if(cols.get(columnNumber).isEmpty()){
+          System.out.println("INVALID: Column has no cards to remove");
+          return;
+        }
+        int size = cols.get(columnNumber).size();
+        cols.get(columnNumber).remove(size-1);
     }
 
     private boolean columnHasCards(int columnNumber) {
