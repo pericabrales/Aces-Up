@@ -17,16 +17,20 @@ public class Game {
 
     public Game(){
         // initialize a new game such that each column can store cards
-        for(int i=0; i<4; i++){
-            cols.add(new ArrayList<Card>());
-        }
+        //for(int i=0; i<4; i++){
+          //  cols.add(new ArrayList<Card>());
+        //}
         //create the deck
-        buildDeck();
-        System.out.println("Created the deck");
+        //buildDeck();
+        //System.out.println("Created the deck");
         //shuffle all cards in the deck
-        shuffle();
+        //shuffle();
         //put 4 cards in the column arraylist
-        dealFour();
+        //dealFour();
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
     }
 
     public void buildDeck() {
@@ -58,15 +62,9 @@ public class Game {
         int deckSize = deck.size()-1;
         for(int i=0; i<4; i++){
             //check if the deck is empty
-            //if(deck.deckHasCards()){
             if(deckHasCards()){
-                //each column of 4 gets a card
-                Card card = deck.get(deckSize);
-                addCardToCol(i, card);
-                deckSize--;
-
-               //remove the card from the size of the deck
-               //deck.remove(deck.size()-1);
+                cols.get(i).add(deck.get(deck.size()-1));
+                deck.remove(deck.size()-1);
             }
         }
     }
