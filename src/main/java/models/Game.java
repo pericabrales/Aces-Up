@@ -18,6 +18,14 @@ public class Game {
     public Game(){
         // initialize a new game such that each column can store cards
 
+        //create the deck
+        buildDeck();
+        System.out.println("Created the deck");
+        //shuffle all cards in the deck
+        shuffle();
+        //put 4 cards in the column arraylist
+        dealFour();
+
     }
 
     public void buildDeck() {
@@ -46,14 +54,18 @@ public class Game {
 
     public void dealFour() {
         // remove the top card from the deck and add it to a column; repeat for each of the four columns
+        int deckSize = deck.size()-1;
         for(int i=0; i<4; i++){
             //check if the deck is empty
             //if(deck.deckHasCards()){
             if(deckHasCards()){
                 //each column of 4 gets a card
-                addCardToCol(i, deck.get(deck.size()-1));
+                Card card = deck.get(deckSize);
+                addCardToCol(i, card);
+                deckSize--;
+
                //remove the card from the size of the deck
-               deck.remove(deck.size()-1);
+               //deck.remove(deck.size()-1);
             }
         }
     }
