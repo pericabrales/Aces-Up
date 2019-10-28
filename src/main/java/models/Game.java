@@ -108,7 +108,6 @@ public class Game {
     //this function will check if there are more cards of the same suit of the card chosen
     public boolean moreCardsSameSuit(int colNum){
         //trying to get the suit of the card at the given column number
-        //not sure if this is how you do it, but it got mad at me when I tried to do one less .get()
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
 
@@ -116,12 +115,16 @@ public class Game {
 
         //loop through the columns to make sure there is more than one card with this suit
         for(int i = 0; i < cols.size(); i++){
-            Card loopCard = getTopCard(i);
-            String currSuit = loopCard.getSuit().toString();
 
-            //if there are more cards with the same suit, then add to the counter
-            if(currSuit == suit){
-                sameSuit++;
+            if(cols.get(i).isEmpty() == false){
+                System.out.println("Inside for loop");
+                Card loopCard = getTopCard(i);
+                String currSuit = loopCard.getSuit().toString();
+
+                //if there are more cards with the same suit, then add to the counter
+                if (currSuit == suit) {
+                    sameSuit++;
+                }
             }
         }
         //if there are more than one card with the suit, return true
@@ -145,14 +148,17 @@ public class Game {
 
         //loop through the columns to see if the card is smaller than any other cards with its suit
         for(int i = 0; i < cols.size(); i++){
-            Card loopCard = getTopCard(i);
-            String currSuit = loopCard.getSuit().toString();
-            int currVal = loopCard.getValue();
 
-            //if the card has the name suit and its value is bigger, return true
-            //able to discard given card
-            if(currSuit == suit && val < currVal){
-                return true;
+            if(cols.get(i).isEmpty() == false) {
+                Card loopCard = getTopCard(i);
+                String currSuit = loopCard.getSuit().toString();
+                int currVal = loopCard.getValue();
+
+                //if the card has the name suit and its value is bigger, return true
+                //able to discard given card
+                if (currSuit == suit && val < currVal) {
+                    return true;
+                }
             }
         }
 
