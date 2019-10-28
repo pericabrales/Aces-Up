@@ -65,8 +65,15 @@ public class Game {
           System.out.println("INVALID: Column has no cards to remove");
           return;
         }
-        int size = cols.get(columnNumber).size();
-        cols.get(columnNumber).remove(size-1);
+        //make sure there are more cards with the same suit
+        if(moreCardsSameSuit(columnNumber)){
+            //if there are more cards of the same suit, check to make sure it is the smallest card out of them
+            if(smallestCard(columnNumber)){
+                //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
+                int size = cols.get(columnNumber).size();
+                cols.get(columnNumber).remove(size-1);
+            }
+        }
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -97,16 +104,6 @@ public class Game {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
 
-    public void deleteTopCard(int colNum){
-        //make sure there are more cards with the same suit
-        if(moreCardsSameSuit(colNum)){
-            //if there are more cards of the same suit, check to make sure it is the smallest card out of them
-            if(smallestCard(colNum)){
-                //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
-                remove(colNum);
-            }
-        }
-    }
 
     //this function will check if there are more cards of the same suit of the card chosen
     public boolean moreCardsSameSuit(int colNum){
