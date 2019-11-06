@@ -92,8 +92,14 @@ public class Game {
     }
 
 
+    //CODE FOR THIS FUNCTION FROM GIVEN SPRINT 2 CODE
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        if(cols.get(columnTo).isEmpty()) {
+            Card cardToMove = getTopCard(columnFrom);
+            this.removeCardFromCol(columnFrom);
+            this.addCardToCol(columnTo, cardToMove);
+        }
     }
 
     public void addCardToCol(int columnTo, Card cardToMove) {
@@ -117,7 +123,6 @@ public class Game {
         for(int i = 0; i < cols.size(); i++){
 
             if(cols.get(i).isEmpty() == false){
-                System.out.println("Inside for loop");
                 Card loopCard = getTopCard(i);
                 String currSuit = loopCard.getSuit().toString();
 
