@@ -17,12 +17,59 @@ width: 100px;
 background-color:#F0F0F0;
 }
 
-button {
+#dealButton {
+font-size: 250%;
+position: absolute;
+top: 0px;
+left: 0px;
+background-size: cover;
+width: 175px;
+height: 175px;
 background-color: #68F4FE;
 }
 
 
+#discardPile {
+font-size: 250%;
+position: absolute;
+bottom: 0px;
+left: 0px;
+background-size: cover;
+width: 175px;
+height: 175px;
+background-color: #EF401D;
+}
+
+#newgamebutton{
+font-size: 100%;
+position: absolute;
+top: 0px;
+right: 0px;
+background-size: cover;
+width:150px;
+height: 75px;
+background-color: #FBFB67;
+}
 body{
     background-color: #39B530;
     color: black;
+}
+.score-board {
+    position: absolute;
+    top: 100px;
+    right: 10px;
+  text-align: center;
+  padding: 25px;
+}
+.player {
+  display: inline-block;
+  padding: 15px;
+}
+.player h4 {
+  font-weight: bold;
+}
+.score-box {
+  border: 3px solid black;
+  padding: 30px;
+  color: black;
 }
