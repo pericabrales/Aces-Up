@@ -1,3 +1,4 @@
+
 tr{
 width:500px;
 }
@@ -6,6 +7,15 @@ td{
 width:10px;
 height:20px;
 text-align:center;
+}
+
+h1 {
+    font-size: 100px;
+    padding-left: 50px;
+    font-family: "Verdana";
+    color: #00822f;
+    text-align: center;
+    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
 }
 
 .title{
@@ -51,8 +61,10 @@ height: 75px;
 background-color: #FBFB67;
 }
 body{
-    background-color: #39B530;
+    //background-color: #39B530;
     color: black;
+    background-image: url('https://us.123rf.com/450wm/bengingell/bengingell1701/bengingell170100158/70172235-green-felt-of-a-card-table.jpg?ver=6');
+    background-size: cover;
 }
 .score-board {
     position: absolute;
