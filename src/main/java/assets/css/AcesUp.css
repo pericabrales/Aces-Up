@@ -3,7 +3,7 @@ width:500px;
 }
 
 td{
-width:100px;
+width:10px;
 height:20px;
 text-align:center;
 }
@@ -15,4 +15,14 @@ font-weight: bold;
 .cardLocation{
 width: 100px;
 background-color:#F0F0F0;
+}
+
+button {
+background-color: #68F4FE;
+}
+
+
+body{
+    background-color: #39B530;
+    color: black;
 }
