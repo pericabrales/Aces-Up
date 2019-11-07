@@ -121,7 +121,7 @@ margin-bottom:-110%;
  background-repeat:no-repeat;
  height: 290px;
  width: 210px;
- border-radius: 15px
+ border-radius: 15px;
 }
 
 
@@ -138,22 +138,25 @@ background-image:url('https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08
 background-repeat:no-repeat;
 height: 290px;
 width: 210px;
-border-radius: 15px
+border-radius: 15px;
 }
 
 #newgamebutton{
 font-size: 100%;
+font-weight: bold;
 position: absolute;
-top: 0px;
-right: 0px;
+top: 10px;
+right: 110px;
+background-image: url('http://pixelartmaker.com/art/805d8a5b6ce043a.png');
 background-size: cover;
-width:150px;
+background-repeat:no-repeat;
+width: 300px;
 height: 75px;
 background-color: #FBFB67;
 }
 
 body{
-    //background-color: #39B530;
+    background-color: #39B530;
     color: black;
     background-image: url('https://us.123rf.com/450wm/bengingell/bengingell1701/bengingell170100158/70172235-green-felt-of-a-card-table.jpg?ver=6');
     background-size: cover;
@@ -171,8 +174,8 @@ body{
     font-size: 150%;
     font-weight:700;
     position: absolute;
-    bottom: 600px;
-    right: 70px;
+    bottom: 430px;
+    right: 10px;
     background-image: url('http://www.pngmart.com/files/9/Golden-Ribbon-Banner-PNG-Transparent-Image.png');
     background-size: cover;
     background-repeat:no-repeat;
@@ -183,8 +186,8 @@ body{
   font-weight: bold;
 }
 .score-box {
-  bottom: 540px;
-  right: 110px;
+  bottom: 370px;
+  right: 50px;
   position: absolute;
   width: 70px;
   border: 3px solid black;
