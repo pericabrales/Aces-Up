@@ -158,7 +158,9 @@ background-color: #FBFB67;
 body{
     background-color: #39B530;
     color: black;
-    background-image: url('https://us.123rf.com/450wm/bengingell/bengingell1701/bengingell170100158/70172235-green-felt-of-a-card-table.jpg?ver=6');
+    /*background-image: url('https://us.123rf.com/450wm/bengingell/bengingell1701/bengingell170100158/70172235-green-felt-of-a-card-table.jpg?ver=6');
+    */
+    background-image: url('https://media.istockphoto.com/photos/green-poker-table-felt-background-picture-id467583755?k=6&m=467583755&s=170667a&w=0&h=5R3uISc7VIgI6o-jGq-hUSbBf2rfsNyAtZHxKpjEREg=');
     background-size: cover;
 }
 .score-board {
