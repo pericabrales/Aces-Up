@@ -33,12 +33,8 @@ public class Game {
     }
 
     public void shuffle() {
-        Collections.shuffle(deck);
-        // System.out.println("Results after shuffle operation:");
-//        for(Card str: deck){
-//            System.out.println(str);
-//        }
-        // shuffles the deck so that it is random
+        long seed = System.nanoTime();
+        Collections.shuffle(deck, new Random(seed));
     }
 
     // check if there are cards in the deck
@@ -77,14 +73,10 @@ public class Game {
     }
 
     private boolean columnHasCards(int columnNumber) {
-        if(cols.get(columnNumber).isEmpty()) {
-            System.out.println("This column is empty, a card can be moved here");
+        if(this.cols.get(columnNumber).size()>0){
             return true;
         }
-        else {
-            System.out.println("This column is not empty, a card can not be moved here");
-            return false;
-        }
+        return false;
     }
 
     public Card getTopCard(int columnNumber) {
@@ -94,6 +86,9 @@ public class Game {
 
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        Card cardToMove = getTopCard(columnFrom);
+        this.removeCardFromCol(columnFrom);
+        this.addCardToCol(columnTo,cardToMove);
     }
 
     public void addCardToCol(int columnTo, Card cardToMove) {
