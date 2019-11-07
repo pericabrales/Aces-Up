@@ -19,10 +19,11 @@ h1 {
     font-size: 100px;
     padding-left: 50px;
     font-family: "Verdana";
-    color: #00822f;
+    color: black;
     text-align: center;
-    text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+    text-shadow: -4px -4px 5px darkred;
 }
+
 
 .title{
 font-weight: bold;
@@ -30,20 +31,25 @@ font-weight: bold;
 
 .cardLocation{
 width: 100px;
-background-color:#F0F0F0;
+}
+
+.cardImage{
+max-width: 170px;
+margin-bottom:-110%;
 }
 
 #dealButton {
  font-size: 250%;
  font-weight:700;
  position: relative;
- bottom: 380px;
+ bottom: 450px;
  left: 20px;
  background-size: cover;
  background-image:url('https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg');
  background-repeat:no-repeat;
  height: 290px;
  width: 210px;
+ border-radius: 15px
 }
 
 
@@ -51,13 +57,14 @@ background-color:#F0F0F0;
 font-size: 250%;
 font-weight:700;
 position: relative;
-bottom: 320px;
+bottom: 370px;
 left: 20px;
 background-size: cover;
 background-image:url('https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg');
 background-repeat:no-repeat;
 height: 290px;
 width: 210px;
+border-radius: 15px
 }
 
 #newgamebutton{
