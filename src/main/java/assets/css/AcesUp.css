@@ -24,9 +24,79 @@ h1 {
     text-shadow: -4px -4px 5px darkred;
 }
 
+.move_remove{
+    font-family: "Verdana";
+    position: relative;
+    bottom: 800px;
+    font-size: 30px;
+    font-weight:600;
+    color: white;
+    text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
+}
+
+#Remove1{
+     font-size: 17px;
+     font-family: "Verdana";
+     border-radius:50%;
+     height: 100px;
+     width: 100px;
+     margin: 5px;
+     background-color: darkred;
+     color: white;
+     position: relative;
+     right: 12px;
+     font-weight: 700;
+     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+  }
+
+ #Remove2{
+       font-size: 17px;
+       font-family: "Verdana";
+       border-radius:50%;
+       height: 100px;
+       width: 100px;
+       margin: 5px;
+       background-color: darkred;
+       color: white;
+       position: relative;
+       right: 12px;
+       font-weight: 700;
+       text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#Remove3{
+     font-size: 17px;
+     font-family: "Verdana";
+     border-radius:50%;
+     height: 100px;
+     width: 100px;
+     margin: 5px;
+     background-color: darkred;
+     color: white;
+     position: relative;
+     right: 12px;
+     font-weight: 700;
+     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
+
+#Remove4{
+     font-size: 17px;
+     font-family: "Verdana";
+     border-radius:50%;
+     height: 100px;
+     width: 100px;
+     margin: 5px;
+     background-color: darkred;
+     color: white;
+     position: relative;
+     right: 12px;
+     font-weight: 700;
+     text-shadow: -1px -1px 0 #000, 1px -1px 0 #000, -1px 1px 0 #000, 1px 1px 0 #000;
+}
 
 .title{
 font-weight: bold;
+font-family: "Verdana";
 }
 
 .cardLocation{
@@ -42,6 +112,8 @@ margin-bottom:-110%;
  font-size: 250%;
  font-weight:700;
  position: relative;
+ color: white;
+ text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
  bottom: 450px;
  left: 20px;
  background-size: cover;
@@ -57,6 +129,8 @@ margin-bottom:-110%;
 font-size: 250%;
 font-weight:700;
 position: relative;
+color: white;
+text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
 bottom: 370px;
 left: 20px;
 background-size: cover;
@@ -77,6 +151,7 @@ width:150px;
 height: 75px;
 background-color: #FBFB67;
 }
+
 body{
     //background-color: #39B530;
     color: black;
