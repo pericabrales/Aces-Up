@@ -44,16 +44,11 @@ public class Game {
     }
 
     public void dealFour() {
-        // remove the top card from the deck and add it to a column; repeat for each of the four columns
-        int deckSize = deck.size()-1;
-            //check if the deck is empty
-            if(deckHasCards()){
-                for(int i = 0; i < 4; i++){
-                    cols.get(i).add(deck.get(deck.size()-1));
-                    deck.remove(deck.size()-1);
-                }
-            }
+        for(int i = 0; i < 4; i++){
+            cols.get(i).add(deck.get(deck.size()-1));
+            deck.remove(deck.size()-1);
         }
+    }
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
