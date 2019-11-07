@@ -14,6 +14,7 @@ public class Game {
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
+    int playerScore = 0;
 
     public Game(){
         // initialize a new game such that each column can store cards
@@ -63,6 +64,7 @@ public class Game {
                 //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
                 int size = cols.get(columnNumber).size();
                 cols.get(columnNumber).remove(size-1);
+                playerScore++;
             }
         }
     }
@@ -79,11 +81,14 @@ public class Game {
     }
 
 
+    //CODE TAKEN FROM GIVEN SPRINT 2 CODE
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
-        Card cardToMove = getTopCard(columnFrom);
-        this.removeCardFromCol(columnFrom);
-        this.addCardToCol(columnTo,cardToMove);
+        if(cols.get(columnTo).isEmpty()) {
+            Card cardToMove = getTopCard(columnFrom);
+            this.removeCardFromCol(columnFrom);
+            this.addCardToCol(columnTo, cardToMove);
+        }
     }
 
     public void addCardToCol(int columnTo, Card cardToMove) {
