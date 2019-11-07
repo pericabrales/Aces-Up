@@ -112,7 +112,6 @@ public class Game {
         for(int i = 0; i < cols.size(); i++){
 
             if(cols.get(i).isEmpty() == false){
-                System.out.println("Inside for loop");
                 Card loopCard = getTopCard(i);
                 String currSuit = loopCard.getSuit().toString();
 
