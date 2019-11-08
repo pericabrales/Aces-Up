@@ -92,7 +92,7 @@
         <h4>SCORE</h4>
     </div>
     <div class="score-box">
-        15
+        0
     </div>
     <!--</div>-->
 </div>
@@ -187,18 +187,36 @@ dataType:"json",
 
 }
 
+function updateScore(){
+    $(".score-box").html(game.playerScore);
+    console.log(game.playerScore);
+}
+function checkLastMove(){
+    console.log(game.lastAttemptValid);
+    if(!game.lastAttemptValid){
+        alert("You're last move was invalid!");
+    }
+}
 
 $("#Remove1").click(function(){
     removeCard(0);
+    updateScore();
+    checkLastMove();
 });
 $("#Remove2").click(function(){
     removeCard(1);
+    updateScore();
+    checkLastMove();
 });
 $("#Remove3").click(function(){
     removeCard(2);
+    updateScore();
+    checkLastMove();
 });
 $("#Remove4").click(function(){
     removeCard(3);
+    updateScore();
+    checkLastMove();
 });
 
 
