@@ -168,6 +168,18 @@
         </exclusion>
       </exclusions>
     </dependency>
+      <dependency>
+          <groupId>com.google.inject</groupId>
+          <artifactId>guice</artifactId>
+          <version>4.0</version>
+          <scope>compile</scope>
+      </dependency>
+    <dependency>
+      <groupId>org.ninjaframework</groupId>
+      <artifactId>ninja-core</artifactId>
+      <version>5.2.2</version>
+      <scope>compile</scope>
+    </dependency>
   </dependencies>
   <properties>
     <ninja.version>5.2.2</ninja.version>

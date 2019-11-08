@@ -15,6 +15,7 @@ public class Game {
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
     int playerScore = 0;
+    boolean lastAttemptValid = true;
 
     public Game(){
         // initialize a new game such that each column can store cards
@@ -53,8 +54,10 @@ public class Game {
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
+        lastAttemptValid = false;
         if(cols.get(columnNumber).isEmpty()){
           System.out.println("INVALID: Column has no cards to remove");
+
           return;
         }
         //make sure there are more cards with the same suit
@@ -65,6 +68,7 @@ public class Game {
                 int size = cols.get(columnNumber).size();
                 cols.get(columnNumber).remove(size-1);
                 playerScore++;
+                lastAttemptValid = true;
             }
         }
     }
@@ -158,6 +162,14 @@ public class Game {
 
         //this card is the biggest card out of the cards on the top of the column
         return false;
+    }
+
+    public int getPlayerScore(){
+        return playerScore;
+    }
+
+    public boolean getLastAttemptValid(){
+        return lastAttemptValid;
     }
 
 }
