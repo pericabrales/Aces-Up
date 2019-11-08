@@ -92,7 +92,7 @@
         <h4>SCORE</h4>
     </div>
     <div class="score-box">
-        15
+        0
     </div>
     <!--</div>-->
 </div>
@@ -215,6 +215,11 @@ $.ajax({
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
+});
+
+//to make the new game button work
+$("#newgamebutton").click(function(){
+    location.reload();
 });
 
 
