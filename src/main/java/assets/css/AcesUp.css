@@ -27,19 +27,19 @@ h1 {
 .move_remove{
     font-family: "Verdana";
     position: relative;
-    bottom: 800px;
-    font-size: 30px;
+    bottom: 900px;
+    font-size: 20px;
     font-weight:600;
     color: white;
     text-shadow: -2px -2px 0 #000, 2px -2px 0 #000, -2px 2px 0 #000, 2px 2px 0 #000;
 }
 
 #Remove1{
-     font-size: 17px;
+     font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
-     height: 100px;
-     width: 100px;
+     height: 80px;
+     width: 80px;
      margin: 5px;
      background-color: darkred;
      color: white;
@@ -50,11 +50,11 @@ h1 {
   }
 
  #Remove2{
-       font-size: 17px;
+       font-size: 12px;
        font-family: "Verdana";
        border-radius:50%;
-       height: 100px;
-       width: 100px;
+       height: 80px;
+       width: 80px;
        margin: 5px;
        background-color: darkred;
        color: white;
@@ -65,11 +65,11 @@ h1 {
 }
 
 #Remove3{
-     font-size: 17px;
+     font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
-     height: 100px;
-     width: 100px;
+     height: 80px;
+     width: 80px;
      margin: 5px;
      background-color: darkred;
      color: white;
@@ -80,11 +80,11 @@ h1 {
 }
 
 #Remove4{
-     font-size: 17px;
+     font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
-     height: 100px;
-     width: 100px;
+     height: 80px;
+     width: 80px;
      margin: 5px;
      background-color: darkred;
      color: white;
@@ -157,7 +157,7 @@ background-color: #FBFB67;
 
 body{
     background-color: #39B530;
-    color: black;
+    color: white;
     /*background-image: url('https://us.123rf.com/450wm/bengingell/bengingell1701/bengingell170100158/70172235-green-felt-of-a-card-table.jpg?ver=6');
     */
     background-image: url('https://media.istockphoto.com/photos/green-poker-table-felt-background-picture-id467583755?k=6&m=467583755&s=170667a&w=0&h=5R3uISc7VIgI6o-jGq-hUSbBf2rfsNyAtZHxKpjEREg=');
@@ -176,7 +176,7 @@ body{
     font-size: 150%;
     font-weight:700;
     position: absolute;
-    bottom: 430px;
+    bottom: 530px;
     right: 10px;
     background-image: url('http://www.pngmart.com/files/9/Golden-Ribbon-Banner-PNG-Transparent-Image.png');
     background-size: cover;
@@ -185,10 +185,11 @@ body{
     width: 200px;
 }
 .player h4 {
+    color: black;
   font-weight: bold;
 }
 .score-box {
-  bottom: 370px;
+  bottom: 470px;
   right: 50px;
   position: absolute;
   width: 70px;
