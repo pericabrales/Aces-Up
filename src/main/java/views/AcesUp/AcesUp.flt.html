@@ -184,10 +184,11 @@ display(data);},
 contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
-
 }
 
 function updateScore(){
+    game.playerScore++;
+    //console.log(game.playerScore);
     $(".score-box").html(game.playerScore);
     console.log(game.playerScore);
 }
