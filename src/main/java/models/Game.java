@@ -90,8 +90,10 @@ public class Game {
         // remove the top card from the columnFrom column, add it to the columnTo column
         if(cols.get(columnTo).isEmpty()) {
             Card cardToMove = getTopCard(columnFrom);
-            this.removeCardFromCol(columnFrom);
-            this.addCardToCol(columnTo, cardToMove);
+            if(cardToMove.getValue() == 14) {
+                this.removeCardFromCol(columnFrom);
+                this.addCardToCol(columnTo, cardToMove);
+            }
         }
     }
 
@@ -143,6 +145,7 @@ public class Game {
 
         //get value of given card
         int val = currCard.getValue();
+        //System.out.println("current value is: " + val);
 
         //loop through the columns to see if the card is smaller than any other cards with its suit
         for(int i = 0; i < cols.size(); i++){
