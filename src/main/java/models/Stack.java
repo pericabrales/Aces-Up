@@ -1,5 +1,7 @@
 package models;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 
 public class Stack {
@@ -9,7 +11,7 @@ public class Stack {
     public Stack(){
         //don't really have to construct anything here
     }
-
+    @JsonIgnore
     public int getNumCards(){
         return this.stack.size();
     }
