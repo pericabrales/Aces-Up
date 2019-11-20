@@ -206,14 +206,20 @@ public class Game {
     //@JsonIgnore
     public Stack getColumn1(){return columns.get(0);}
     public void setColumn1(Stack s){columns.add(0, s);}
+
+    public Stack getColumn2(){return columns.get(1);}
     public void setColumn2(Stack s){columns.add(1, s);}
+
+    public Stack getColumn3(){return columns.get(2);}
     public void setColumn3(Stack s){columns.add(2, s);}
+
+    public Stack getColumn4(){return columns.get(3);}
     public void setColumn4(Stack s){columns.add(3, s);}
 
     //@JsonIgnore
-    public Stack getColumn2(){return columns.get(1);}
+    //public Stack getColumn2(){return columns.get(1);}
     //@JsonIgnore
-    public Stack getColumn3(){return columns.get(2);}
+    //public Stack getColumn3(){return columns.get(2);}
     //@JsonIgnore
-    public Stack getColumn4(){return columns.get(3);}
+   // public Stack getColumn4(){return columns.get(3);}
 }
