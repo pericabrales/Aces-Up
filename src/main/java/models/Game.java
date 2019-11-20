@@ -12,9 +12,14 @@ import java.util.*;
  */
 public class Game {
 
-    Deck deck;
+    Deck deck = new Deck();
 
     public java.util.List<Stack> columns = new ArrayList<Stack>();
+    public Stack column1 = new Stack();
+    public Stack column2 = new Stack();
+    public Stack column3 = new Stack();
+    public Stack column4 = new Stack();
+
 
     //public java.util.List<Card> deck = new ArrayList<>();
 
@@ -24,10 +29,13 @@ public class Game {
     boolean lastAttemptValid = true;
 
     public Game(){
-        System.out.println("Here");
         //initializing the columns
-        for(int i=0; i<4; i++)
-            columns.add(new Stack());
+        columns.add(column1);
+        columns.add(column2);
+        columns.add(column3);
+        columns.add(column4);
+//        for(int i=0; i<4; i++)
+//            columns.add(new Stack());
 
 
         // initialize a new game such that each column can store cards
@@ -39,8 +47,6 @@ public class Game {
 
     public void buildDeck() {
         //initializing the deck
-        System.out.println("Building the deck...");
-        deck = new Deck();
         deck.buildDeck();
         deck.shuffle();
 //        for(int i = 2; i < 15; i++){
@@ -49,7 +55,6 @@ public class Game {
 //            deck.add(new Card(i,Suit.Diamonds));
 //            deck.add(new Card(i,Suit.Spades));
 //        }
-        System.out.println("Deck Built");
     }
 
 //    public void shuffle() {
@@ -64,13 +69,12 @@ public class Game {
 //    }
 
     public void dealFour() {
-        System.out.println("Dealing Cards...");
         for(int i = 0; i < 4; i++){
+            System.out.println(deck.getTopCard());
             columns.get(i).addCard(deck.getTopCard());
 //            cols.get(i).add(deck.get(deck.size()-1));
 //            deck.remove(deck.size()-1);
         }
-        System.out.println("Cards Dealt.");
     }
 
     public void remove(int columnNumber) {
@@ -205,16 +209,16 @@ public class Game {
 
     //@JsonIgnore
     public Stack getColumn1(){return columns.get(0);}
-    public void setColumn1(Stack s){columns.add(0, s);}
+    //public void setColumn1(Stack s){columns.add(0, s);}
 
     public Stack getColumn2(){return columns.get(1);}
-    public void setColumn2(Stack s){columns.add(1, s);}
+    //public void setColumn2(Stack s){columns.add(1, s);}
 
     public Stack getColumn3(){return columns.get(2);}
-    public void setColumn3(Stack s){columns.add(2, s);}
+    //public void setColumn3(Stack s){columns.add(2, s);}
 
     public Stack getColumn4(){return columns.get(3);}
-    public void setColumn4(Stack s){columns.add(3, s);}
+    //public void setColumn4(Stack s){columns.add(3, s);}
 
     //@JsonIgnore
     //public Stack getColumn2(){return columns.get(1);}

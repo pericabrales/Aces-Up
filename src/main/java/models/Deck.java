@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Deck {
     public java.util.List<Card> deckarray = new ArrayList<Card>();
+    public int deckSize = 0;
 
     public Deck(){
     }
@@ -15,6 +16,7 @@ public class Deck {
             deckarray.add(new Card(i,Suit.Diamonds));
             deckarray.add(new Card(i,Suit.Spades));
         }
+        deckSize = 52;
     }
     public void shuffle() {
         long seed = System.nanoTime();
@@ -22,11 +24,12 @@ public class Deck {
     }
 
     public int get_size_deck(){
-       return this.deckarray.size();
+       return this.deckSize;
     }
     public Card getTopCard() {
-        Card temp = this.deckarray.get(get_size_deck()-1);
-        this.deckarray.remove(get_size_deck()-1);
+        Card temp = this.deckarray.get(10);
+        this.deckarray.remove(10);
+        deckSize--;
         return temp;
     }
  
