@@ -178,18 +178,21 @@ $.ajax({
 type: "POST",
 url: "/removeCard/"+colNumber,
 data: JSON.stringify(game),
-success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-game = data;
-display(data);},
+success: function(data, status){
+    console.log("Data: " + data + "\nStatus: " + status);
+    console.log("Succeeded");
+    game = data;
+    updateScore();
+    checkLastMove();
+    display(data);
+
+},
 contentType:"application/json; charset=utf-8",
 dataType:"json",
 });
-//updateScore();
 }
 
 function updateScore(){
-    game.playerScore++;
-    //console.log(game.playerScore);
     $(".score-box").html(game.playerScore);
     console.log(game.playerScore);
 }
@@ -202,23 +205,15 @@ function checkLastMove(){
 
 $("#Remove1").click(function(){
     removeCard(0);
-    updateScore();
-    checkLastMove();
 });
 $("#Remove2").click(function(){
     removeCard(1);
-    updateScore();
-    checkLastMove();
 });
 $("#Remove3").click(function(){
     removeCard(2);
-    updateScore();
-    checkLastMove();
 });
 $("#Remove4").click(function(){
     removeCard(3);
-    updateScore();
-    checkLastMove();
 });
 
 
