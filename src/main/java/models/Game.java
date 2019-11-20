@@ -67,7 +67,7 @@ public class Game {
                 //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
                 int size = cols.get(columnNumber).size();
                 cols.get(columnNumber).remove(size-1);
-                //playerScore++;
+                playerScore++;
                 lastAttemptValid = true;
             }
         }
