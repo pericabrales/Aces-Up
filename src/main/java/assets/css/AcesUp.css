@@ -35,6 +35,7 @@ h1 {
 }
 
 #Remove1{
+     cursor: pointer;
      font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
@@ -50,6 +51,7 @@ h1 {
   }
 
  #Remove2{
+       cursor: pointer;
        font-size: 12px;
        font-family: "Verdana";
        border-radius:50%;
@@ -65,6 +67,7 @@ h1 {
 }
 
 #Remove3{
+     cursor: pointer;
      font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
@@ -80,6 +83,7 @@ h1 {
 }
 
 #Remove4{
+     cursor: pointer;
      font-size: 12px;
      font-family: "Verdana";
      border-radius:50%;
@@ -109,6 +113,7 @@ margin-bottom:-110%;
 }
 
 #dealButton {
+ cursor: pointer;
  font-size: 250%;
  font-weight:700;
  position: relative;
@@ -126,6 +131,7 @@ margin-bottom:-110%;
 
 
 #discardPile {
+cursor: pointer;
 font-size: 250%;
 font-weight:700;
 position: relative;
@@ -142,11 +148,13 @@ border-radius: 15px;
 }
 
 #newgamebutton{
+cursor: pointer;
 font-size: 100%;
 font-weight: bold;
 position: absolute;
-top: 10px;
-right: 40px;
+top:60px;
+right:10px;
+padding: 1px;
 background-image: url('http://pixelartmaker.com/art/805d8a5b6ce043a.png');
 background-size: cover;
 background-repeat:no-repeat;
