@@ -88,11 +88,13 @@ public class Game {
     //CODE TAKEN FROM GIVEN SPRINT 2 CODE
     public void move(int columnFrom, int columnTo) {
         // remove the top card from the columnFrom column, add it to the columnTo column
+        lastAttemptValid = false;
         if(cols.get(columnTo).isEmpty()) {
             Card cardToMove = getTopCard(columnFrom);
             if(cardToMove.getValue() == 14) {
                 this.removeCardFromCol(columnFrom);
                 this.addCardToCol(columnTo, cardToMove);
+                lastAttemptValid = true;
             }
         }
     }

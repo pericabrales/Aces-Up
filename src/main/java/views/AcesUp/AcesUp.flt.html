@@ -199,7 +199,7 @@ function updateScore(){
 function checkLastMove(){
     console.log(game.lastAttemptValid);
     if(!game.lastAttemptValid){
-        alert("You're last move was invalid!");
+        alert("This is an invalid move!");
     }
 }
 
@@ -226,6 +226,7 @@ $.ajax({
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
+        checkLastMove();
         display(data);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
