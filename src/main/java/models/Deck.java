@@ -5,10 +5,8 @@ import java.util.Random;
 
 public class Deck {
     public java.util.List<Card> deckarray = new ArrayList<Card>();
-    public int points;
 
     public Deck(){
-        points = 0;
     }
     public void buildDeck() {
         for(int i = 2; i < 15; i++){

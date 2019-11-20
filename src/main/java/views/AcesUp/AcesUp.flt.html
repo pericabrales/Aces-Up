@@ -115,6 +115,8 @@
 var game;
 
 function getCardPic(value, suit){
+        console.log(value);
+        console.log(suit);
         if(value == 10) {
             value = "0";
         } else if(value == 11){
@@ -126,6 +128,8 @@ function getCardPic(value, suit){
         } else if (value == 14) {
             value = "A";
         }
+        console.log(value);
+        console.log(suit[0]);
         return "<img class='cardImage' src='https://deckofcardsapi.com/static/img/" + value + suit[0] + ".png'>"
 }
 
@@ -134,19 +138,20 @@ console.log(game);
 
 $( '.columnOfCards .cardLocation' ).html("");
 
-    $.each(game.cols[0], function( key, val ) {
-        $( '#c0 .l'+key ).html(getCardPic(val.value,val.suit));
-    });
+ $.each(game.column1, function( key, val ) {
+    console.log(val.value);
+    $( '#c0 .l'+key ).html(getCardPic(val.value,val.suit));
+  });
 
- $.each(game.cols[1], function( key, val ) {
+ $.each(game.column2, function( key, val ) {
         $( '#c1 .l'+key ).html(getCardPic(val.value,val.suit));
     });
 
- $.each(game.cols[2], function( key, val ) {
+ $.each(game.column3, function( key, val ) {
         $( '#c2 .l'+key ).html(getCardPic(val.value,val.suit));
     });
 
- $.each(game.cols[3], function( key, val ) {
+ $.each(game.column4, function( key, val ) {
         $( '#c3 .l'+key ).html(getCardPic(val.value,val.suit));
     });
 
