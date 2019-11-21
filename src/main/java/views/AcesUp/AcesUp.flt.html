@@ -87,6 +87,7 @@
         </td>
     </tr>
 </table>
+
 <div class="score-board">
     <div class="player">
         <h4>SCORE</h4>
@@ -101,13 +102,17 @@
             id="dealButton">DEAL 4 CARDS
     </button>
 </div>
-<button id="discardPile">DISCARD PILE</button>
+
+<div class="discard">
+    <img class="discard-image" src="https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg" style="width: 100%">
+</div>
+
 <button id="newgamebutton"></button>
 
 <div class="move_remove" align="right">
-    <BR>Remove from:
+    <BR> Remove from:
             <br><button id="Remove1">Column0</button><button id="Remove2">Column1</button><br><button id="Remove3">Column2</button><button id="Remove4">Column3</button>
-    <BR>Move from column <br><input type="text" id="from_col"  /> <br>to <br><input type="text" id="to_col"  /> <br><button id="moveButton">Move</button>
+    <BR>Move from column: <br><input type="text" id="from_col"  /> <br> to: <br><input type="text" id="to_col"  /> <br><button id="moveButton">Move</button>
 </div>
 
 <script>
@@ -205,15 +210,35 @@ function checkLastMove(){
 
 $("#Remove1").click(function(){
     removeCard(0);
+    var discardImg = document.querySelector(".discard-image");
+    discardImg.style.display = "block";
+    var discPil = document.querySelector(".discard");
+    discPil.style.opacity = 1.0;
+    discPil.style.backgroundColor = "#00000000";
 });
 $("#Remove2").click(function(){
     removeCard(1);
+    var discardImg = document.querySelector(".discard-image");
+    discardImg.style.display = "block";
+    var discPil = document.querySelector(".discard");
+    discPil.style.opacity = 1.0;
+    discPil.style.backgroundColor = "#00000000";
 });
 $("#Remove3").click(function(){
     removeCard(2);
+    var discardImg = document.querySelector(".discard-image");
+    discardImg.style.display = "block";
+    var discPil = document.querySelector(".discard");
+    discPil.style.opacity = 1.0;
+    discPil.style.backgroundColor = "#00000000";
 });
 $("#Remove4").click(function(){
     removeCard(3);
+    var discardImg = document.querySelector(".discard-image");
+    discardImg.style.display = "block";
+    var discPil = document.querySelector(".discard");
+    discPil.style.opacity = 1.0;
+    discPil.style.backgroundColor = "#00000000";
 });
 
 
