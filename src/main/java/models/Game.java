@@ -15,6 +15,7 @@ public class Game {
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
     int playerScore = 0;
+    boolean startGame = true;
     public Deck deck;
     //public java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
@@ -33,10 +34,28 @@ public class Game {
     }
 
     public void dealFour() {
-        for(int i = 0; i < 4; i++){
-            cols.get(i).add(deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+        //if(startGame == true) {
+        for (int i = 0; i < 4; i++) {
+            //if(deck.size() > 0){
+            cols.get(i).add(deck.get(deck.size() - 1));
+            deck.remove(deck.size() - 1);
+            //}
         }
+        /*    startGame = false;
+        } else if (startGame == false) {
+            for(int i = 0; i < 4; i++){
+                if(cols.get(i).columnHasCards(i)){
+                    cols.get(i).add(deck.get(deck.size() - 1));
+                    deck.remove(deck.size() - 1);
+                }
+                else{
+                    if(cols.get(i).getTopCard(i).getValue() == 14){
+                        cols.get(i).add(deck.get(deck.size() - 1));
+                        deck.remove(deck.size() - 1);
+                    }
+                }
+            }
+        }*/
     }
 
     public void remove(int columnNumber) {
