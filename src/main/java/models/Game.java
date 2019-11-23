@@ -10,11 +10,14 @@ import java.util.*;
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
+    //public java.util.List<Card> deck = new ArrayList<>();
 
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
     int playerScore = 0;
+    boolean startGame = true;
+    public Deck deck;
+    //public java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
 
     public Game(){
@@ -25,31 +28,34 @@ public class Game {
         cols.add(new ArrayList<Card>());
     }
 
-    public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }
-
-    public void shuffle() {
-        long seed = System.nanoTime();
-        Collections.shuffle(deck, new Random(seed));
-    }
-
-    // check if there are cards in the deck
-
-    public boolean deckHasCards(){
-        return (!this.deck.isEmpty());
+    public void makeGame(){
+        deck = new Deck();
+        deck.buildDeck();
     }
 
     public void dealFour() {
-        for(int i = 0; i < 4; i++){
-            cols.get(i).add(deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+        //if(startGame == true) {
+        for (int i = 0; i < 4; i++) {
+            //if(deck.size() > 0){
+            cols.get(i).add(deck.get(deck.size() - 1));
+            deck.remove(deck.size() - 1);
+            //}
         }
+        /*    startGame = false;
+        } else if (startGame == false) {
+            for(int i = 0; i < 4; i++){
+                if(cols.get(i).columnHasCards(i)){
+                    cols.get(i).add(deck.get(deck.size() - 1));
+                    deck.remove(deck.size() - 1);
+                }
+                else{
+                    if(cols.get(i).getTopCard(i).getValue() == 14){
+                        cols.get(i).add(deck.get(deck.size() - 1));
+                        deck.remove(deck.size() - 1);
+                    }
+                }
+            }
+        }*/
     }
 
     public void remove(int columnNumber) {
@@ -67,7 +73,7 @@ public class Game {
                 //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
                 int size = cols.get(columnNumber).size();
                 cols.get(columnNumber).remove(size-1);
-                playerScore++;
+                deck.points++;
                 lastAttemptValid = true;
             }
         }
@@ -170,7 +176,7 @@ public class Game {
     }
 
     public int getPlayerScore(){
-        return playerScore;
+        return deck.points;
     }
 
     public boolean getLastAttemptValid(){
