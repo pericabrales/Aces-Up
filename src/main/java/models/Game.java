@@ -27,53 +27,15 @@ public class Game {
         cols.add(new ArrayList<Card>());
     }
 
-    /*public void buildDeck() {
-        for(int i = 2; i < 15; i++){
-            deck.add(new Card(i,Suit.Clubs));
-            deck.add(new Card(i,Suit.Hearts));
-            deck.add(new Card(i,Suit.Diamonds));
-            deck.add(new Card(i,Suit.Spades));
-        }
-    }*/
-
     public void makeGame(){
         deck = new Deck();
         deck.buildDeck();
     }
 
-    /*public void shuffle() {
-        long seed = System.nanoTime();
-        Collections.shuffle(deck, new Random(seed));
-    }
-
-    // check if there are cards in the deck
-
-    public boolean deckHasCards(){
-        return (!this.deck.isEmpty());
-    }*/
-
-    /*public java.util.List<Card> getcol1() {
-        return cols.get(0).col;
-    }
-
-    public java.util.List<Card> getcol2() {
-        return cols.get(1).col;
-    }
-
-    public java.util.List<Card> getcol3() {
-        return cols.get(2).col;
-    }
-
-    public java.util.List<Card> getcol4() {
-        return cols.get(3).col;
-    }*/
-
     public void dealFour() {
         for(int i = 0; i < 4; i++){
-            //if(deck.size() > 0){
             cols.get(i).add(deck.get(deck.size()-1));
             deck.remove(deck.size()-1);
-            //}
         }
     }
 
@@ -94,30 +56,6 @@ public class Game {
                 cols.get(columnNumber).remove(size-1);
                 deck.points++;
                 lastAttemptValid = true;
-            }
-        }
-    }
-
-    /*public void remove(int columnNumber) {
-        if (cols.get(columnNumber).columnHasCards()) {
-            Card c = cols.get(columnNumber).getTopCard();
-            boolean removeCard = false;
-            //Check for valid move first
-            for (int i = 0; i < 4; i++) {
-                if (i != columnNumber) {
-                    if (cols.get(i).columnHasCards()) {
-                        Card compare = cols.get(i).getTopCard();
-                        if (compare.getSuit() == c.getSuit()) {
-                            if (compare.getValue() > c.getValue()) {
-                                removeCard = true;
-                            }
-                        }
-                    }
-                }
-            }
-            if (removeCard) {
-                this.cols.get(columnNumber).removeCard();
-                deck.points++;
             }
         }
     }
