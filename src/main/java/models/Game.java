@@ -3,28 +3,28 @@ package models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-//import java.util.*;
+import java.util.*;
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
 public class Game {
 
-    /*public java.util.List<Card> deck = new ArrayList<>();
+    //public java.util.List<Card> deck = new ArrayList<>();
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);*/
+    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
     int playerScore = 0;
     public Deck deck;
-    private java.util.List<Column> cols = new ArrayList<>();
+    //public java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
 
     public Game(){
         // initialize a new game such that each column can store cards
-        cols.add(new Column());
-        cols.add(new Column());
-        cols.add(new Column());
-        cols.add(new Column());
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
+        cols.add(new ArrayList<Card>());
     }
 
     /*public void buildDeck() {
@@ -52,7 +52,7 @@ public class Game {
         return (!this.deck.isEmpty());
     }*/
 
-    public java.util.List<Card> getcol1() {
+    /*public java.util.List<Card> getcol1() {
         return cols.get(0).col;
     }
 
@@ -66,17 +66,18 @@ public class Game {
 
     public java.util.List<Card> getcol4() {
         return cols.get(3).col;
-    }
+    }*/
+
     public void dealFour() {
         for(int i = 0; i < 4; i++){
-            if(deck.size() > 0){
-                cols.get(i).addCardToCol(deck.get(deck.size()-1));
-                deck.remove(deck.size()-1);
-            }
+            //if(deck.size() > 0){
+            cols.get(i).add(deck.get(deck.size()-1));
+            deck.remove(deck.size()-1);
+            //}
         }
     }
 
-    /*public void remove(int columnNumber) {
+    public void remove(int columnNumber) {
         // remove the top card from the indicated column
         lastAttemptValid = false;
         if(cols.get(columnNumber).isEmpty()){
@@ -91,13 +92,13 @@ public class Game {
                 //since it is the smallest card out of all the top cards, and there are more cards with its suit, let it be removed
                 int size = cols.get(columnNumber).size();
                 cols.get(columnNumber).remove(size-1);
-                playerScore++;
+                deck.points++;
                 lastAttemptValid = true;
             }
         }
-    }*/
+    }
 
-    public void remove(int columnNumber) {
+    /*public void remove(int columnNumber) {
         if (cols.get(columnNumber).columnHasCards()) {
             Card c = cols.get(columnNumber).getTopCard();
             boolean removeCard = false;
@@ -129,10 +130,10 @@ public class Game {
                 cols.get(columnTo).addCardToCol(cardToMove);
             }
         }
-    }
+    }*/
 
-/*
-            private boolean columnHasCards(int columnNumber) {
+
+    private boolean columnHasCards(int columnNumber) {
         if(this.cols.get(columnNumber).size()>0){
             return true;
         }
@@ -164,11 +165,11 @@ public class Game {
 
     public void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
-    }*/
+    }
 
 
     //this function will check if there are more cards of the same suit of the card chosen
-    /*public boolean moreCardsSameSuit(int colNum){
+    public boolean moreCardsSameSuit(int colNum){
         //trying to get the suit of the card at the given column number
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
@@ -196,10 +197,10 @@ public class Game {
 
         //no other cards with the same suit
         return false;
-    }*/
+    }
 
     //check if given column number houses the smallest card
-    /*public boolean smallestCard (int colNum){
+    public boolean smallestCard (int colNum){
         //get the suit from the card in the given column
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
@@ -226,10 +227,10 @@ public class Game {
 
         //this card is the biggest card out of the cards on the top of the column
         return false;
-    }*/
+    }
 
     public int getPlayerScore(){
-        return playerScore;
+        return deck.points;
     }
 
     public boolean getLastAttemptValid(){
