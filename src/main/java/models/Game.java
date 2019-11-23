@@ -60,17 +60,6 @@ public class Game {
         }
     }
 
-    public void move(int columnFrom, int columnTo) {
-        if (cols.get(columnFrom).columnHasCards()) {
-            Card cardToMove = cols.get(columnFrom).getTopCard();
-            if (!cols.get(columnTo).columnHasCards() && cardToMove.getValue() == 14 && cols.get(columnFrom).columnHasCards()) { //check that moving to empty column. Will need to change this line a bit when refactor
-                cols.get(columnFrom).removeCard();
-                cols.get(columnTo).addCardToCol(cardToMove);
-            }
-        }
-    }*/
-
-
     private boolean columnHasCards(int columnNumber) {
         if(this.cols.get(columnNumber).size()>0){
             return true;
