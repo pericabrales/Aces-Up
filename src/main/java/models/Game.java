@@ -12,7 +12,7 @@ import java.util.*;
  */
 public class Game {
 
-    Deck deck = new Deck();
+    private Deck deck = new Deck();
 
     public java.util.List<Stack> columns = new ArrayList<Stack>();
     public Stack column1 = new Stack();
@@ -70,7 +70,6 @@ public class Game {
 
     public void dealFour() {
         for(int i = 0; i < 4; i++){
-            System.out.println(deck.getTopCard());
             columns.get(i).addCard(deck.getTopCard());
 //            cols.get(i).add(deck.get(deck.size()-1));
 //            deck.remove(deck.size()-1);
@@ -206,6 +205,8 @@ public class Game {
     public boolean getLastAttemptValid(){
         return lastAttemptValid;
     }
+
+    public Deck getDeck(){return deck;}
 
     //@JsonIgnore
     public Stack getColumn1(){return columns.get(0);}

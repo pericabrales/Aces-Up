@@ -33,6 +33,7 @@ public class ApplicationController {
     
     public Result gameGet(){
         Game g = new Game();
+        System.out.println("initialising game");
         g.buildDeck();
         //g.shuffle();
         g.dealFour();
