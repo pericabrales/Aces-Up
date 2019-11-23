@@ -23,13 +23,20 @@ public class Deck {
         Collections.shuffle(deckarray, new Random(seed));
     }
 
-    public int get_size_deck(){
+    public int size(){
        return this.deckarray.size();
     }
-    public Card getTopCard() {
+    /*public Card getTopCard() {
         Card temp = this.deckarray.get(get_size_deck()-1);
         this.deckarray.remove(get_size_deck()-1);
         return temp;
+    }*/
+    public Card get(int i) {
+        return this.deckarray.get(i);
+    }
+    public void remove(int i)
+    {
+        this.deckarray.remove(i);
     }
  
 }

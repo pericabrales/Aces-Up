@@ -17,6 +17,7 @@
 package controllers;
 
 import models.Game;
+import models.Deck;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -33,8 +34,8 @@ public class ApplicationController {
     
     public Result gameGet(){
         Game g = new Game();
-        g.buildDeck();
-        g.shuffle();
+        g.makeGame();
+        g.deck.shuffle();
         g.dealFour();
 
         return Results.json().render(g);

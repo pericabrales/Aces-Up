@@ -3,38 +3,45 @@ package models;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.*;
+//import java.util.*;
 
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
 public class Game {
 
-    public java.util.List<Card> deck = new ArrayList<>();
+    /*public java.util.List<Card> deck = new ArrayList<>();
 
-    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
+    public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);*/
 
     int playerScore = 0;
+    public Deck deck;
+    private java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
 
     public Game(){
         // initialize a new game such that each column can store cards
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
-        cols.add(new ArrayList<Card>());
+        cols.add(new Column());
+        cols.add(new Column());
+        cols.add(new Column());
+        cols.add(new Column());
     }
 
-    public void buildDeck() {
+    /*public void buildDeck() {
         for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
             deck.add(new Card(i,Suit.Hearts));
             deck.add(new Card(i,Suit.Diamonds));
             deck.add(new Card(i,Suit.Spades));
         }
+    }*/
+
+    public void makeGame(){
+        deck = new Deck();
+        deck.buildDeck();
     }
 
-    public void shuffle() {
+    /*public void shuffle() {
         long seed = System.nanoTime();
         Collections.shuffle(deck, new Random(seed));
     }
@@ -43,16 +50,33 @@ public class Game {
 
     public boolean deckHasCards(){
         return (!this.deck.isEmpty());
+    }*/
+
+    public java.util.List<Card> getcol1() {
+        return cols.get(0).col;
     }
 
+    public java.util.List<Card> getcol2() {
+        return cols.get(1).col;
+    }
+
+    public java.util.List<Card> getcol3() {
+        return cols.get(2).col;
+    }
+
+    public java.util.List<Card> getcol4() {
+        return cols.get(3).col;
+    }
     public void dealFour() {
         for(int i = 0; i < 4; i++){
-            cols.get(i).add(deck.get(deck.size()-1));
-            deck.remove(deck.size()-1);
+            if(deck.size() > 0){
+                cols.get(i).addCardToCol(deck.get(deck.size()-1));
+                deck.remove(deck.size()-1);
+            }
         }
     }
 
-    public void remove(int columnNumber) {
+    /*public void remove(int columnNumber) {
         // remove the top card from the indicated column
         lastAttemptValid = false;
         if(cols.get(columnNumber).isEmpty()){
@@ -71,9 +95,44 @@ public class Game {
                 lastAttemptValid = true;
             }
         }
+    }*/
+
+    public void remove(int columnNumber) {
+        if (cols.get(columnNumber).columnHasCards()) {
+            Card c = cols.get(columnNumber).getTopCard();
+            boolean removeCard = false;
+            //Check for valid move first
+            for (int i = 0; i < 4; i++) {
+                if (i != columnNumber) {
+                    if (cols.get(i).columnHasCards()) {
+                        Card compare = cols.get(i).getTopCard();
+                        if (compare.getSuit() == c.getSuit()) {
+                            if (compare.getValue() > c.getValue()) {
+                                removeCard = true;
+                            }
+                        }
+                    }
+                }
+            }
+            if (removeCard) {
+                this.cols.get(columnNumber).removeCard();
+                deck.points++;
+            }
+        }
     }
 
-    private boolean columnHasCards(int columnNumber) {
+    public void move(int columnFrom, int columnTo) {
+        if (cols.get(columnFrom).columnHasCards()) {
+            Card cardToMove = cols.get(columnFrom).getTopCard();
+            if (!cols.get(columnTo).columnHasCards() && cardToMove.getValue() == 14 && cols.get(columnFrom).columnHasCards()) { //check that moving to empty column. Will need to change this line a bit when refactor
+                cols.get(columnFrom).removeCard();
+                cols.get(columnTo).addCardToCol(cardToMove);
+            }
+        }
+    }
+
+/*
+            private boolean columnHasCards(int columnNumber) {
         if(this.cols.get(columnNumber).size()>0){
             return true;
         }
@@ -105,11 +164,11 @@ public class Game {
 
     public void removeCardFromCol(int colFrom) {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
-    }
+    }*/
 
 
     //this function will check if there are more cards of the same suit of the card chosen
-    public boolean moreCardsSameSuit(int colNum){
+    /*public boolean moreCardsSameSuit(int colNum){
         //trying to get the suit of the card at the given column number
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
@@ -137,10 +196,10 @@ public class Game {
 
         //no other cards with the same suit
         return false;
-    }
+    }*/
 
     //check if given column number houses the smallest card
-    public boolean smallestCard (int colNum){
+    /*public boolean smallestCard (int colNum){
         //get the suit from the card in the given column
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
@@ -167,7 +226,7 @@ public class Game {
 
         //this card is the biggest card out of the cards on the top of the column
         return false;
-    }
+    }*/
 
     public int getPlayerScore(){
         return playerScore;
