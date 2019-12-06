@@ -91,11 +91,11 @@ public class Game {
         lastAttemptValid = false;
         if(cols.get(columnTo).isEmpty()) {
             Card cardToMove = getTopCard(columnFrom);
-            if(cardToMove.getValue() == 14) {
+           // if(cardToMove.getValue() == 14) {
                 this.removeCardFromCol(columnFrom);
                 this.addCardToCol(columnTo, cardToMove);
                 lastAttemptValid = true;
-            }
+           // }
         }
     }
 

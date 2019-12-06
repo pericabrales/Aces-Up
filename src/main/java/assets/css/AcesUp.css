@@ -246,3 +246,12 @@ body{
   background-color:#F0F0F0;
 }
 
+.gameMode {
+   height: 70px;
+   width: 70px;
+   border-radius: 50%;
+   border: 1px solid black;
+   cursor: pointer;
+   color:white;
+   background-color:black;
+ }
