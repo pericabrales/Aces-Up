@@ -11,7 +11,7 @@ import java.io.Serializable;
 
 public class SCard implements Serializable {
     public final int value;
-    public final Suit suit;
+    public final SSuit suit;
 
     @JsonCreator
     public SCard(@JsonProperty("value") int value, @JsonProperty("suit") SSuit suit) {
