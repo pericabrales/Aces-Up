@@ -28,6 +28,15 @@ public class Game {
         cols.add(new ArrayList<Card>());
     }
 
+    public void setupGame (String type){
+        if(type.equals("normal") || type.equals("")){
+            deck = new Deck();
+        } else if (type.equals("spanish")){
+            deck = new SpanishDeck();
+        }
+        deck.buildDeck();
+    }
+
     public void makeGame(){
         deck = new Deck();
         deck.buildDeck();
@@ -41,22 +50,8 @@ public class Game {
             deck.remove(deck.size() - 1);
             //}
         }
-        /*    startGame = false;
-        } else if (startGame == false) {
-            for(int i = 0; i < 4; i++){
-                if(cols.get(i).columnHasCards(i)){
-                    cols.get(i).add(deck.get(deck.size() - 1));
-                    deck.remove(deck.size() - 1);
-                }
-                else{
-                    if(cols.get(i).getTopCard(i).getValue() == 14){
-                        cols.get(i).add(deck.get(deck.size() - 1));
-                        deck.remove(deck.size() - 1);
-                    }
-                }
-            }
-        }*/
     }
+
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
@@ -90,6 +85,18 @@ public class Game {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
+    public int getTopCardValue(int colNumber) {
+        return this.getTopCard(colNumber).getValue();
+    }
+
+    public Suit getTopCardSuit(int colNumber) {
+        return this.getTopCard(colNumber).getSuit();
+    }
+
+    public boolean colHasCards(int colNumber) {
+        return !cols.get(colNumber).isEmpty();
+    }
+
 
     //CODE TAKEN FROM GIVEN SPRINT 2 CODE
     public void move(int columnFrom, int columnTo) {
@@ -107,6 +114,29 @@ public class Game {
 
     public void addCardToCol(int columnTo, Card cardToMove) {
         cols.get(columnTo).add(cardToMove);
+    }
+
+    public boolean canRemove(int index) {
+        Card card = this.getTopCard(index);
+        for (int i = 0; i < 4; i++) {
+            if (columnHasCards(i)) {
+                Card toCompare = getTopCard(i);
+                if (toCompare.getValue() > card.getValue() && toCompare.getSuit() == card.getSuit()) {
+                    return true;
+                }
+            }
+        }
+        return false;
+    }
+
+    public int canMove() {
+        int emptyIndex = -1;
+        for (int i = 0; i < 4; i++) {
+            if (!this.columnHasCards(i)) {
+                emptyIndex = i;
+            }
+        }
+        return emptyIndex;
     }
 
     public void removeCardFromCol(int colFrom) {
