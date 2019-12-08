@@ -126,24 +126,22 @@ var game;
 var gamemode =2;
 
 
-
-function spanishmode(){
-
+$("#spanishMode").click(function(){
     gamemode = 1;
     document.getElementById("spanishMode");
     console.log("SPANISH clicked");
     console.log(gamemode);
+    location.reload();
+});
 
-}
 
-function modeSwitch(){
-    gamemode =0;
+$("#regularMode").click(function(){
+   gamemode =0;
     document.getElementById("regularMode");
     console.log("REGULAR clicked");
     console.log(gamemode);
-}
-
-
+    location.reload();
+});
 
 
 function getCardPic(value, suit){

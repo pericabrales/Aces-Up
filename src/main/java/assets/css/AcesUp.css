@@ -154,7 +154,7 @@ margin-bottom:-110%;
  position: relative;
  color: white;
  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
- bottom: 450px;
+ bottom: 350px;
  left: 20px;
  background-size: cover;
  background-image:url('https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg');
@@ -171,7 +171,7 @@ font-weight:700;
 position: relative;
 color: white;
 text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
-bottom: 370px;
+bottom: 300px;
 left: 20px;
 height: 290px;
 width: 210px;
@@ -200,6 +200,39 @@ background-repeat:no-repeat;
 width: 300px;
 height: 75px;
 background-color: #FBFB67;
+}
+
+#regularMode{
+cursor: pointer;
+font-size: 120%;
+font-weight: LIGHT;
+position: absolute;
+top:200px;
+right:1560px;
+padding: 1px;
+//background-image: url('http://pixelartmaker.com/art/805d8a5b6ce043a.png');
+background-size: cover;
+background-repeat:no-repeat;
+width: 140px;
+height: 70px;
+background-color: BLACK;
+}
+
+#spanishMode{
+cursor: pointer;
+font-size: 120%;
+font-weight: LIGHT;
+position: absolute;
+top:200px;
+/*right:1680px;*/
+left: 20px;
+padding: 1px;
+//background-image: url('http://pixelartmaker.com/art/805d8a5b6ce043a.png');
+background-size: cover;
+background-repeat:no-repeat;
+width: 140px;
+height: 70px;
+background-color: BLACK;
 }
 
 body{
