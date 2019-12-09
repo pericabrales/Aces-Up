@@ -61,7 +61,7 @@ public class ApplicationController {
     public Result spanishMode(Context context, Game g){
 
         if(context.getRequestPath().contains("spanish")) {
-            //g.switchDeck();
+            g.switchDeck();
         }
         return Results.json().render(g);
     }

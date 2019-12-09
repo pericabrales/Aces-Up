@@ -25,6 +25,46 @@ public class Game {
         cols.add(new ArrayList<Card>());
     }
 
+    public void clearcols(){
+        int tempSize;
+        for (int i =0; i < 4;i++){
+            System.out.println("COLUMN " + i + "HAS " + cols.get(i).size() + " CARDS");
+            tempSize = cols.get(i).size();
+            for (int j =0; j < tempSize;j++){
+                System.out.println("IN COL: " + i + " DELETING CARD : " + j);
+                cols.get(i).remove(0);
+            }
+        }
+        System.out.println("here haha");
+    }
+
+    public void cleardeck(){
+        int tempdecksize = deck.size();
+        for (int i =0; i < tempdecksize;i++) {
+            deck.remove(0);
+        }
+    }
+
+    public void buildSpanDeck() {
+        for (int i = 1; i < 13; i++){
+            deck.add(new Card(i, Suit.Bastos));
+            deck.add(new Card(i, Suit.Oros));
+            deck.add(new Card(i, Suit.Copas));
+            deck.add(new Card(i, Suit.Espadas));
+        }
+        deck.add(new Card(0, Suit.comodines));
+        deck.add(new Card(0, Suit.comodines));
+    }
+
+    public void switchDeck(){
+       clearcols();
+       cleardeck();
+       buildSpanDeck();
+       shuffle();
+       dealFour();
+    }
+
+
     public void buildDeck() {
         for(int i = 2; i < 15; i++){
             deck.add(new Card(i,Suit.Clubs));
@@ -46,13 +86,28 @@ public class Game {
     }
 
     public void dealFour() {
-        for(int i = 0; i < 4; i++){
+        int limit = 4;
+        int tempsize = deck.size();
+        if (tempsize < 4){limit = 2;}
+        for(int i = 0; i < limit; i++){
             cols.get(i).add(deck.get(deck.size()-1));
             deck.remove(deck.size()-1);
         }
     }
 
     public void remove(int columnNumber) {
+        boolean hasjoker = false;
+        Card temp;
+        int joker=-1;
+        for(int i =0; i < 4;i++){
+            temp = getTopCard(i);
+            if(temp.getValue() == 0){
+                hasjoker = true;
+                joker = i;
+
+            }
+        }
+
         // remove the top card from the indicated column
         lastAttemptValid = false;
         if(cols.get(columnNumber).isEmpty()){
@@ -70,6 +125,16 @@ public class Game {
                 playerScore++;
                 lastAttemptValid = true;
             }
+        }
+
+        if(hasjoker == true){
+            int size = cols.get(columnNumber).size();
+            cols.get(columnNumber).remove(size-1);
+            int jokercolsize = cols.get(joker).size();
+            cols.get(joker).remove(jokercolsize-1);
+
+            playerScore +=2;
+            lastAttemptValid = true;
         }
     }
 
