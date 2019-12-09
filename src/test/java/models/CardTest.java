@@ -7,7 +7,6 @@ import static org.junit.Assert.*;
 
 public class CardTest {
 
-    public class testCard {
         @Test
         public void testGetSuit() {
             Card c = new Card(5, Suit.Clubs);
@@ -26,6 +25,4 @@ public class CardTest {
             Card c = new Card(15, Suit.Hearts);
             assertNotEquals("AHearts", c.toString());
         }
-
-    }
 }

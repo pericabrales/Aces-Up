@@ -1,10 +1,10 @@
 package models;
 
+import com.google.inject.internal.cglib.proxy.$Factory;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Random;
-import java.util.*;
-
 /**
  * Assignment 1: Each of the blank methods below require implementation to get AcesUp to build/run
  */
@@ -16,6 +16,8 @@ public class Game {
 
     int playerScore = 0;
     boolean startGame = true;
+    public int deckType;
+
     public Deck deck;
     //public java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
@@ -26,19 +28,27 @@ public class Game {
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
         cols.add(new ArrayList<Card>());
-    }
-
-    public void setupGame (String type){
-        if(type.equals("normal") || type.equals("")){
-            deck = new Deck();
-        } else if (type.equals("spanish")){
-            deck = new SpanishDeck();
-        }
-        deck.buildDeck();
+        makeGame();
     }
 
     public void makeGame(){
-        deck = new Deck();
+        if(deckType == 0) { //0 is regular
+            deck = new USDeck();
+            ((USDeck)deck).buildDeck();
+        }else if(deckType == 1){ //1 is Spanish
+            deck = new SpanishDeck();
+            ((SpanishDeck)deck).buildDeck();
+            ((SpanishDeck)deck).shuffle();
+        }
+    }
+
+    public void setupGame (String version) {
+        if(version.equals("normal") || version.equals("")) {
+            deck = new USDeck();
+        }
+        else if (version.equals("spanish")) {
+            deck = new SpanishDeck();
+        }
         deck.buildDeck();
     }
 
@@ -52,6 +62,16 @@ public class Game {
         }
     }
 
+    public void customDeal(int c1, int c2, int c3, int c4) {
+        cols.get(0).add(deck.get(c1));
+        deck.remove(c1);
+        cols.get(1).add(deck.get(c2));
+        deck.remove(c2);
+        cols.get(2).add(deck.get(c3));
+        deck.remove(c3);
+        cols.get(3).add(deck.get(c4));
+        deck.remove(c4);
+    }
 
     public void remove(int columnNumber) {
         // remove the top card from the indicated column
@@ -211,6 +231,18 @@ public class Game {
 
     public boolean getLastAttemptValid(){
         return lastAttemptValid;
+    }
+
+    public void switchDeck() {
+        if (this.deckType == 0) {
+            this.deckType = 1;
+        } else if (this.deckType == 1) {
+            this.deckType = 0;
+        }
+
+        //reset other variables
+        this.makeGame();
+        this.dealFour();
     }
 
 }
