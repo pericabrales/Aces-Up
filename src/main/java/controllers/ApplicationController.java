@@ -58,4 +58,20 @@ public class ApplicationController {
         return Results.json().render(g);
     }
 
+    public Result spanishMode(Context context, Game g){
+
+        if(context.getRequestPath().contains("spanish")) {
+            g.switchDeck();
+        }
+        return Results.json().render(g);
+    }
+
+    public Result englishMode(Context context, Game g){
+
+        if(context.getRequestPath().contains("english")) {
+            //g.dealFour();
+        }
+        return Results.json().render(g);
+    }
+
 }

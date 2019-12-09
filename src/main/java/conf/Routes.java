@@ -37,6 +37,9 @@ public class Routes implements ApplicationRoutes {
         router.POST().route("/moveCard/{columnFrom}/{columnTo}").with(ApplicationController.class, "moveCard");
         router.POST().route("/removeCard/{column}").with(ApplicationController.class, "removeCard");
 
+        router.POST().route("/spanish").with(ApplicationController.class, "spanishMode");
+        router.POST().route("/english").with(ApplicationController.class, "englishMode");
+
         ///////////////////////////////////////////////////////////////////////
         // Assets (pictures / javascript)
         ///////////////////////////////////////////////////////////////////////    

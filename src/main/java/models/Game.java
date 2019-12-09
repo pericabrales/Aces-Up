@@ -183,4 +183,6 @@ public class Game {
         return lastAttemptValid;
     }
 
+    public void switchDeck() {
+    }
 }
