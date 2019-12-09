@@ -5,10 +5,14 @@
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
 
-<body>
-<div class="row justify-content-center">
-    <table class="table-custom text-centered">
-        <tr class="title text-centered ">
+
+<div>
+
+<table align="center">
+
+
+    <tr class="title">
+
         <td>Column0</td>
         <td >Column1</td>
         <td >Column2</td>
@@ -113,17 +117,19 @@
     </div>
 </div>
 
-<div class="row justify-content-center d-none position-relative" id="start-game-popup">
-    <div class="alert alert-danger position-absolute text-center " role="alert">
-        Please Select a Language!
-        <br>
-        <button type="button" id="dismiss-error-btn" class="english-button btn btn-danger" >
-            <span>English</span>
+
+    <div class="gameMode">
+        <button
+               id="regularMode" >Regular game
         </button>
-        <button type="button" id="dismiss-error-btn" class="spanish-button btn btn-danger" >
-            <span>Spanish</span>
+        <button
+                id="spanishMode" >Spanish game
         </button>
     </div>
+
+<div class="discard">
+    <img class="discard-image" src="https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg" style="width: 100%">
+
 </div>
 
 <button id="newgamebutton"></button>
@@ -137,14 +143,17 @@
 <script>
 
 var game;
-var gamemode =2;
+var gameMode = 0;
 
-var start_div = document.getElementById("start-game-popup");
- start_div.classList.remove("d-none");
-var mode;
+
+
+
+
+
 
 function getCardPic(value, suit){
-    if(mode=="english"){
+    if (gameMode == 0){
+
         if(value == 10) {
             value = "0";
         } else if(value == 11){
@@ -157,20 +166,24 @@ function getCardPic(value, suit){
             value = "A";
         }
         return "<img class='cardImage' src='https://deckofcardsapi.com/static/img/" + value + suit[0] + ".png'>"
-    }
-    else{
+        }
+        else{
         if(value == 0){
-            return "<img class='cardImage' src='/assets/images/0.jpg'>"
+            return "<img class='cardImage' src='/assets/ima/0.jpg'>"
         }
         if(value == 10) {
             value = "J";
-        } else if(value == 11){
+        }
+        else if(value == 11){
             value = "Q";
-        } else if (value == 12) {
+        }
+        else if (value == 12) {
             value = "K";
         }
-        return "<img class='cardImage' src='/assets/images/" + value + suit[0] + ".jpg'>";
+        return "<img class='cardImage' src='/assets/ima/" + value + suit[0] + ".jpg'>";
        }
+
+
 }
 
 function display(game) {
@@ -219,7 +232,45 @@ game = data;
 });
 });
 
-$(".spanish-button").click(function(){
+
+$("#regularMode").click(function(){
+$.ajax({
+  type: "POST",
+  url: "/english",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        console.log("here in english");
+        gameMode =0;
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+$("#spanishMode").click(function(){
+$.ajax({
+  type: "POST",
+  url: "/spanish",
+  data: JSON.stringify(game),
+  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
+        console.log("here in spanish");
+        gameMode =1;
+
+
+        game = data;
+        display(data);},
+  contentType:"application/json; charset=utf-8",
+  dataType:"json",
+});
+});
+
+
+
+
+$("#dealButton").click(function(){
+
 $.ajax({
   type: "POST",
   url: "/spanish",

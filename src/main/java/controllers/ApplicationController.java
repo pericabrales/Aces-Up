@@ -71,8 +71,14 @@ public class ApplicationController {
     public Result englishMode(Context context, Game g){
 
         if(context.getRequestPath().contains("english")) {
-            g.dealFour();
+
+            //g.dealFour();
         }
         return Results.json().render(g);
     }
+
+
+
+
+
 }

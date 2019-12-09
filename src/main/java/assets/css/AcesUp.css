@@ -267,9 +267,35 @@ body{
 }
 
 
+#regularMode{
+position: absolute;
+  top: 130px;
+  left: 16px;
+  font-size: 18px;
+font-size: large;
+height: 70px;
+margin: 10px;
+border-radius: 10px;
+border: 1px solid black;
+cursor: pointer;
+color:white;
+background-color:black;
 
-.modeButton{
-    height: 25px;
+}
+
+#spanishMode{
+position: absolute;
+  top: 130px;
+  left: 150px;
+  font-size: 18px;
+font-size: large;
+height: 70px;
+margin: 10px;
+border-radius: 10px;
+border: 1px solid black;
+cursor: pointer;
+color:white;
+background-color:black;
 
 }
 
