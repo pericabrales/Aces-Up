@@ -88,14 +88,14 @@ public class Game {
     public void clearcols(){
         int tempSize;
         for (int i =0; i < 4;i++){
-            System.out.println("COLUMN " + i + "HAS " + cols.get(i).size() + " CARDS");
+            //System.out.println("COLUMN " + i + "HAS " + cols.get(i).size() + " CARDS");
             tempSize = cols.get(i).size();
             for (int j =0; j < tempSize;j++){
-                System.out.println("IN COL: " + i + " DELETING CARD : " + j);
+                //System.out.println("IN COL: " + i + " DELETING CARD : " + j);
                 cols.get(i).remove(0);
             }
         }
-        System.out.println("here haha");
+        //System.out.println("here haha");
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -184,7 +184,7 @@ public class Game {
         ((SpanDeck) deck).fillDeck();
         deck.shuffle();
         dealFour();
-        System.out.println("TO SPANISH");
+        //System.out.println("TO SPANISH");
     }
 
     public void switchEnglish() {
@@ -193,6 +193,6 @@ public class Game {
         ((EngDeck) deck).fillDeck();
         deck.shuffle();
         dealFour();
-        System.out.println("TO ENGLISH");
+        //System.out.println("TO ENGLISH");
     }
 }
