@@ -10,14 +10,11 @@ import java.util.*;
  */
 public class Game {
 
-    //public java.util.List<Card> deck = new ArrayList<>();
-
     public java.util.List<java.util.List<Card>> cols = new ArrayList<>(4);
 
     int playerScore = 0;
     boolean startGame = true;
     public Deck deck;
-    //public java.util.List<Column> cols = new ArrayList<>();
     boolean lastAttemptValid = true;
 
     public Game(){
@@ -29,42 +26,40 @@ public class Game {
     }
 
     public void makeGame(){
-        deck = new Deck();
+        deck = new EngDeck();
         deck.buildDeck();
     }
 
     public void dealFour() {
-        //if(startGame == true) {
-        for (int i = 0; i < 4; i++) {
-            //if(deck.size() > 0){
-            cols.get(i).add(deck.get(deck.size() - 1));
-            deck.remove(deck.size() - 1);
-            //}
+        int limit = 4;
+        int tempsize = deck.size();
+        if (tempsize < 4){limit = 2;}
+        for(int i = 0; i < limit; i++){
+            cols.get(i).add(deck.get(deck.size()-1));
+            deck.remove(deck.size()-1);
         }
-        /*    startGame = false;
-        } else if (startGame == false) {
-            for(int i = 0; i < 4; i++){
-                if(cols.get(i).columnHasCards(i)){
-                    cols.get(i).add(deck.get(deck.size() - 1));
-                    deck.remove(deck.size() - 1);
-                }
-                else{
-                    if(cols.get(i).getTopCard(i).getValue() == 14){
-                        cols.get(i).add(deck.get(deck.size() - 1));
-                        deck.remove(deck.size() - 1);
-                    }
-                }
-            }
-        }*/
     }
 
     public void remove(int columnNumber) {
+        System.out.println(playerScore);
+        boolean hasjoker = false;
+        Card temp;
+        int joker=-1;
+        for(int i =0; i < 4;i++){
+            temp = getTopCard(i);
+            if(temp.getValue() == 0){
+                hasjoker = true;
+                joker = i;
+
+            }
+        }
+
         // remove the top card from the indicated column
         lastAttemptValid = false;
         if(cols.get(columnNumber).isEmpty()){
-          System.out.println("INVALID: Column has no cards to remove");
+            System.out.println("INVALID: Column has no cards to remove");
 
-          return;
+            return;
         }
         //make sure there are more cards with the same suit
         if(moreCardsSameSuit(columnNumber)){
@@ -77,6 +72,30 @@ public class Game {
                 lastAttemptValid = true;
             }
         }
+
+        if(hasjoker == true){
+            int size = cols.get(columnNumber).size();
+            cols.get(columnNumber).remove(size-1);
+            int jokercolsize = cols.get(joker).size();
+            cols.get(joker).remove(jokercolsize-1);
+
+            deck.points++;
+            deck.points++;
+            lastAttemptValid = true;
+        }
+    }
+
+    public void clearcols(){
+        int tempSize;
+        for (int i =0; i < 4;i++){
+            System.out.println("COLUMN " + i + "HAS " + cols.get(i).size() + " CARDS");
+            tempSize = cols.get(i).size();
+            for (int j =0; j < tempSize;j++){
+                System.out.println("IN COL: " + i + " DELETING CARD : " + j);
+                cols.get(i).remove(0);
+            }
+        }
+        System.out.println("here haha");
     }
 
     private boolean columnHasCards(int columnNumber) {
@@ -90,18 +109,15 @@ public class Game {
         return this.cols.get(columnNumber).get(this.cols.get(columnNumber).size()-1);
     }
 
-
-    //CODE TAKEN FROM GIVEN SPRINT 2 CODE
     public void move(int columnFrom, int columnTo) {
-        // remove the top card from the columnFrom column, add it to the columnTo column
         lastAttemptValid = false;
         if(cols.get(columnTo).isEmpty()) {
             Card cardToMove = getTopCard(columnFrom);
-            if(cardToMove.getValue() == 14) {
+
                 this.removeCardFromCol(columnFrom);
                 this.addCardToCol(columnTo, cardToMove);
                 lastAttemptValid = true;
-            }
+
         }
     }
 
@@ -113,65 +129,44 @@ public class Game {
         this.cols.get(colFrom).remove(this.cols.get(colFrom).size()-1);
     }
 
-
-    //this function will check if there are more cards of the same suit of the card chosen
     public boolean moreCardsSameSuit(int colNum){
-        //trying to get the suit of the card at the given column number
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
-
         int sameSuit = 0;
 
-        //loop through the columns to make sure there is more than one card with this suit
         for(int i = 0; i < cols.size(); i++){
-
             if(cols.get(i).isEmpty() == false){
                 Card loopCard = getTopCard(i);
                 String currSuit = loopCard.getSuit().toString();
-
-                //if there are more cards with the same suit, then add to the counter
                 if (currSuit == suit) {
                     sameSuit++;
                 }
             }
         }
-        //if there are more than one card with the suit, return true
-        //also couts the card that we gave it
+
         if(sameSuit > 1){
             return true;
         }
 
-        //no other cards with the same suit
         return false;
     }
 
-    //check if given column number houses the smallest card
     public boolean smallestCard (int colNum){
-        //get the suit from the card in the given column
         Card currCard = getTopCard(colNum);
         String suit = currCard.getSuit().toString();
 
-        //get value of given card
         int val = currCard.getValue();
-        //System.out.println("current value is: " + val);
 
-        //loop through the columns to see if the card is smaller than any other cards with its suit
         for(int i = 0; i < cols.size(); i++){
-
             if(cols.get(i).isEmpty() == false) {
                 Card loopCard = getTopCard(i);
                 String currSuit = loopCard.getSuit().toString();
                 int currVal = loopCard.getValue();
-
-                //if the card has the name suit and its value is bigger, return true
-                //able to discard given card
                 if (currSuit == suit && val < currVal) {
                     return true;
                 }
             }
         }
-
-        //this card is the biggest card out of the cards on the top of the column
         return false;
     }
 
@@ -183,6 +178,21 @@ public class Game {
         return lastAttemptValid;
     }
 
-    public void switchDeck() {
+    public void switchSpanish() {
+        clearcols();
+        deck = new SpanDeck();
+        ((SpanDeck) deck).fillDeck();
+        deck.shuffle();
+        dealFour();
+        System.out.println("TO SPANISH");
+    }
+
+    public void switchEnglish() {
+        clearcols();
+        deck = new EngDeck();
+        ((EngDeck) deck).fillDeck();
+        deck.shuffle();
+        dealFour();
+        System.out.println("TO ENGLISH");
     }
 }

@@ -26,16 +26,11 @@ public class Deck {
     public int size(){
        return this.deckarray.size();
     }
-    /*public Card getTopCard() {
-        Card temp = this.deckarray.get(get_size_deck()-1);
-        this.deckarray.remove(get_size_deck()-1);
-        return temp;
-    }*/
+
     public Card get(int i) {
         return this.deckarray.get(i);
     }
-    public void remove(int i)
-    {
+    public void remove(int i) {
         this.deckarray.remove(i);
     }
  

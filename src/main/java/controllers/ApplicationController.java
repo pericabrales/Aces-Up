@@ -61,7 +61,7 @@ public class ApplicationController {
     public Result spanishMode(Context context, Game g){
 
         if(context.getRequestPath().contains("spanish")) {
-            g.switchDeck();
+            g.switchSpanish();
         }
         return Results.json().render(g);
     }
@@ -69,7 +69,7 @@ public class ApplicationController {
     public Result englishMode(Context context, Game g){
 
         if(context.getRequestPath().contains("english")) {
-            //g.dealFour();
+            g.switchEnglish();
         }
         return Results.json().render(g);
     }

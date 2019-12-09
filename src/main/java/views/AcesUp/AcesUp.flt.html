@@ -198,6 +198,7 @@ $.ajax({
         console.log("here in english");
         gameMode =0;
         game = data;
+        $(".score-box").html(game.playerScore);
         display(data);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
@@ -212,6 +213,7 @@ $.ajax({
         console.log("here in spanish");
         gameMode =1;
         game = data;
+        $(".score-box").html(game.playerScore);
         display(data);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",
