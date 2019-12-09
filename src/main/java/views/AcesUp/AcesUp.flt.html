@@ -138,7 +138,7 @@ var gameMode = 0;
 
 
 function getCardPic(value, suit){
-
+    if (gameMode == 0){
         if(value == 10) {
             value = "0";
         } else if(value == 11){
@@ -151,6 +151,22 @@ function getCardPic(value, suit){
             value = "A";
         }
         return "<img class='cardImage' src='https://deckofcardsapi.com/static/img/" + value + suit[0] + ".png'>"
+        }
+        else{
+        if(value == 0){
+            return "<img class='cardImage' src='/assets/images/0.jpg'>"
+        }
+        if(value == 10) {
+            value = "J";
+        }
+        else if(value == 11){
+            value = "Q";
+        }
+        else if (value == 12) {
+            value = "K";
+        }
+        return "<img class='cardImage' src='/assets/ima/" + value + suit[0] + ".jpg'>";
+       }
 
 }
 
@@ -210,6 +226,8 @@ $.ajax({
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         console.log("here in spanish");
         gameMode =1;
+
+
         game = data;
         display(data);},
   contentType:"application/json; charset=utf-8",
