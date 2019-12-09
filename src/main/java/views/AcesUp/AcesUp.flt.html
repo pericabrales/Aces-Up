@@ -1,10 +1,7 @@
 <h1> <input class= "titlepic" type="image" src="/assets/cardpic.jpg" width="100" height="100"/> Aces Up <input type="image" class= "titlepic" src="/assets/cardpic.jpg" width=" 100" height="100"/></h1>
 
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
 <link href="/assets/css/AcesUp.css" rel="stylesheet">
-<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css">
 <script type="text/javascript" src="/assets/webjars/jquery/2.1.3/jquery.js"></script>
-
 
 <div>
 
@@ -12,7 +9,6 @@
 
 
     <tr class="title">
-
         <td>Column0</td>
         <td >Column1</td>
         <td >Column2</td>
@@ -93,7 +89,6 @@
         </td>
     </tr>
 </table>
-</div>
 
 <div class="score-board">
     <div class="player">
@@ -104,19 +99,11 @@
     </div>
     <!--</div>-->
 </div>
-
-<div class="card-decks">
-    <div class="dealbutton">
-        <img src="https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg" style="width: 100%">
-    </div>
-
-
-
-    <div class="discard">
-        <img class="discard-image" src="https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg" style="width: 100%">
-    </div>
+<div class="deal">
+    <button
+            id="dealButton">DEAL 4 CARDS
+    </button>
 </div>
-
 
     <div class="gameMode">
         <button
@@ -129,7 +116,6 @@
 
 <div class="discard">
     <img class="discard-image" src="https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg" style="width: 100%">
-
 </div>
 
 <button id="newgamebutton"></button>
@@ -153,7 +139,6 @@ var gameMode = 0;
 
 function getCardPic(value, suit){
     if (gameMode == 0){
-
         if(value == 10) {
             value = "0";
         } else if(value == 11){
@@ -183,7 +168,6 @@ function getCardPic(value, suit){
         return "<img class='cardImage' src='/assets/ima/" + value + suit[0] + ".jpg'>";
        }
 
-
 }
 
 function display(game) {
@@ -209,29 +193,14 @@ $( '.columnOfCards .cardLocation' ).html("");
 
 }
 
-$.getJSON("http://localhost:8080/game", function( data ) {
-//display(data);
-game = data;
-});
 
-$(".dealbutton").click(function(){
-$.ajax({
-  type: "POST",
-  url: "/dealGame",
-  data: JSON.stringify(game),
-  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-        game = data;
-        display(data);},
-  contentType:"application/json; charset=utf-8",
-  dataType:"json",
-});
 
+
+// Calls ApplicationController.gameGet()
 $.getJSON("http://localhost:8080/game", function( data ) {
 display(data);
 game = data;
 });
-});
-
 
 $("#regularMode").click(function(){
 $.ajax({
@@ -270,10 +239,9 @@ $.ajax({
 
 
 $("#dealButton").click(function(){
-
 $.ajax({
   type: "POST",
-  url: "/spanish",
+  url: "/dealGame",
   data: JSON.stringify(game),
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         game = data;
@@ -281,30 +249,8 @@ $.ajax({
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
-    var start_div = document.getElementById("start-game-popup");
-    start_div.classList.add("d-none");
-    mode="spanish";
-    display(data);
-    game = data;
 });
 
-$(".english-button").click(function(){
-$.ajax({
-  type: "POST",
-  url: "/english",
-  data: JSON.stringify(game),
-  success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
-        game = data;
-        display(data);},
-  contentType:"application/json; charset=utf-8",
-  dataType:"json",
-});
-    var start_div = document.getElementById("start-game-popup");
-    start_div.classList.add("d-none");
-     mode="english";
-    display(data);
-    game = data;
-});
 
 function removeCard(colNumber){
 $.ajax({
