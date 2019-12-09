@@ -1,6 +1,5 @@
 package models;
 
-import java.util.ArrayList;
 
 public class SpanishDeck extends Deck {
 
@@ -10,12 +9,13 @@ public class SpanishDeck extends Deck {
 
     public void buildDeck() {
         for (int i = 1; i < 13; i++) {
-            deckarray.add(new Card(i, Suit.Bastos));
-            deckarray.add(new Card(i, Suit.Oros));
-            deckarray.add(new Card(i, Suit.Copas));
-            deckarray.add(new Card(i, Suit.Espadas));
+            cards.add(new Card(i, Suit.Bastos));
+            cards.add(new Card(i, Suit.Oros));
+            cards.add(new Card(i, Suit.Copas));
+            cards.add(new Card(i, Suit.Espadas));
         }
-        deckarray.add(new Card(0, Suit.Joker));
-        deckarray.add(new Card(0, Suit.Joker));
+        cards.add(new Card(0, Suit.Joker));
+        cards.add(new Card(0, Suit.Joker));
     }
-}
+
+    }

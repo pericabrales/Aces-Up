@@ -2,52 +2,43 @@ package models;
 
 import org.junit.Test;
 
+import java.util.Arrays;
+
 import static org.junit.Assert.*;
 
 public class GameTest {
 
-    Game g = new Game();
-
-    Card testCard1 = new Card(2, Suit.Hearts);
-    Card testCard2 = new Card(5, Suit.Spades);
-    Card testCard3 = new Card(14, Suit.Spades);
-    Card testCard4 = new Card(13, Suit.Spades);
-    Card spanishCard1 = new Card(2, Suit.Oros);
-    Card spanishCard2 = new Card(12, Suit.Espadas);
-    Card spanishCard3 = new Card(13, Suit.Espadas);
-    Card joker = new Card(0, Suit.Joker);
-
     @Test
-    public void testCanRemove() {
-        g.addCardToCol(1, testCard1);
-        g.addCardToCol(2, testCard2);
-        g.addCardToCol(3, testCard3);
-        assertEquals(false, g.canRemove(1));
-        assertEquals(true, g.canRemove(2));
-        assertEquals(false, g.canRemove(3));
-    }
-
-    @Test
-    public void testMove() {
-        g.addCardToCol(1, testCard1);
-        g.move(1, 2);
-        assertEquals(false, g.colHasCards(1));
-        assertEquals(2, g.getTopCardValue(2));
-        assertEquals(Suit.Hearts, g.getTopCardSuit(2));
-    }
-
-    @Test
-    public void testGameCreation() {
-        g.setupGame("normal");
+    public void testGameCreation(){
+        Game g = new Game();
         assertNotNull(g);
     }
 
     @Test
-    public void testGameStart() {
-        g.setupGame("normal");
+    public void testGameBuildDeck(){
+        Game g = new Game();
+        assertEquals(52,g.deck.cards.size());
+    }
 
+    @Test
+    public void testGameShuffle(){
+        Game g1 = new Game();
+        g1.deck.shuffle();
+        Game g2 = new Game();
+        g2.deck.shuffle();
+        // g1 and g2 could shuffle to the same order, but that chance is approximately 1 in 8*10^67 shuffles
+        assertFalse(Arrays.equals(g1.deck.cards.toArray(),g2.deck.cards.toArray()));
+    }
+
+    @Test
+    public void testGameStart(){
+        Game g = new Game();
         g.deck.shuffle();
         g.dealFour();
+        assertEquals(1,g.cols.get(0).size());
+        assertEquals(1,g.cols.get(1).size());
+        assertEquals(1,g.cols.get(2).size());
+        assertEquals(1,g.cols.get(3).size());
     }
 
 }

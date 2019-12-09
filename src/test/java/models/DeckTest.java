@@ -21,7 +21,7 @@ public class DeckTest {
         Deck d = new Deck();
 
         d.buildDeck();
-        assertEquals(52,d.deckarray.size());
+        assertEquals(52,d.cards.size());
     }
 
     @Test
@@ -33,7 +33,7 @@ public class DeckTest {
         deck2.buildDeck();
         deck2.shuffle();
         for(int i = 2; i < 15; i++){
-            assertFalse( Arrays.equals(deck1.deckarray.toArray(),deck2.deckarray.toArray()));
+            assertFalse( Arrays.equals(deck1.cards.toArray(),deck2.cards.toArray()));
         }
     }
 
@@ -41,6 +41,6 @@ public class DeckTest {
     public void testDeckNotCreated(){
 
         Deck d = new Deck();
-        assertEquals(0,d.deckarray.size());
+        assertEquals(0,d.cards.size());
     }
 }
