@@ -17,9 +17,6 @@
 package controllers;
 
 import models.Game;
-import models.Deck;
-import models.SpanishDeck;
-import models.USDeck;
 import ninja.Context;
 import ninja.Result;
 import ninja.Results;
@@ -33,15 +30,16 @@ public class ApplicationController {
     public Result index() {
         return Results.html().template("views/AcesUp/AcesUp.flt.html");
     }
-
+    
     public Result gameGet(){
         Game g = new Game();
-        g.makeGame();
-        g.deck.shuffle();
-        // g.dealFour();
+        g.buildDeck();
+        g.shuffle();
+        g.dealFour();
 
         return Results.json().render(g);
     }
+
 
     public Result dealPost(Context context, Game g) {
         if(context.getRequestPath().contains("deal")){
@@ -71,12 +69,10 @@ public class ApplicationController {
     public Result englishMode(Context context, Game g){
 
         if(context.getRequestPath().contains("english")) {
-
             //g.dealFour();
         }
         return Results.json().render(g);
     }
-
 
 
 
