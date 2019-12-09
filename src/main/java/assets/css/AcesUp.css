@@ -24,10 +24,15 @@ h1 {
     text-shadow: -4px -4px 5px darkred;
 }
 
+#start-game-popup{
+    position: relative;
+    bottom: 390px;
+}
+
 .move_remove{
     font-family: "Verdana";
     position: relative;
-    bottom: 900px;
+    bottom: 880px;
     font-size: 20px;
     font-weight:600;
     color: white;
@@ -147,17 +152,30 @@ max-width: 170px;
 margin-bottom:-110%;
 }
 
-#dealButton {
+.table{
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+
+.table-custom{
+    border-radius: 5px;
+    width: 50%;
+    margin: 0px auto;
+    float: none;
+}
+
+.dealButton {
  cursor: pointer;
  font-size: 250%;
  font-weight:700;
  position: relative;
  color: white;
  text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
- bottom: 450px;
+ bottom: 350px;
  left: 20px;
  background-size: cover;
- background-image:url('https://i.pinimg.com/236x/e6/3c/66/e63c668d79155d429830a08b2b5a8dd4--tally-ho-playing-cards.jpg');
  background-repeat:no-repeat;
  height: 290px;
  width: 210px;
@@ -171,7 +189,7 @@ font-weight:700;
 position: relative;
 color: white;
 text-shadow: -3px -3px 0 #000, 3px -3px 0 #000, -3px 3px 0 #000, 3px 3px 0 #000;
-bottom: 370px;
+bottom: 300px;
 left: 20px;
 height: 290px;
 width: 210px;
@@ -223,7 +241,7 @@ body{
     font-size: 150%;
     font-weight:700;
     position: absolute;
-    bottom: 530px;
+    bottom: 430px;
     right: 10px;
     background-image: url('http://www.pngmart.com/files/9/Golden-Ribbon-Banner-PNG-Transparent-Image.png');
     background-size: cover;
@@ -234,10 +252,12 @@ body{
 .player h4 {
   color: black;
   font-weight: bold;
+  position: relative;
+  top: 35px;
 }
 .score-box {
-  bottom: 470px;
-  right: 50px;
+  bottom: 380px;
+  right: 70px;
   position: absolute;
   width: 70px;
   border: 3px solid black;
@@ -245,6 +265,7 @@ body{
   color: black;
   background-color:#F0F0F0;
 }
+
 
 #regularMode{
 position: absolute;
@@ -277,3 +298,4 @@ color:white;
 background-color:black;
 
 }
+
