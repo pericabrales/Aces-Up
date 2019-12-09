@@ -215,10 +215,12 @@ $.ajax({
   contentType:"application/json; charset=utf-8",
   dataType:"json",
 });
+location.reload();
 });
 
 
 $("#spanishMode").click(function(){
+
 $.ajax({
   type: "POST",
   url: "/spanish",
@@ -226,9 +228,8 @@ $.ajax({
   success: function(data, status){console.log("Data: " + data + "\nStatus: " + status);
         console.log("here in spanish");
         gameMode =1;
-
-
         game = data;
+        $(".score-box").html(game.playerScore);
         display(data);},
   contentType:"application/json; charset=utf-8",
   dataType:"json",

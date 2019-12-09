@@ -62,6 +62,7 @@ public class Game {
        buildSpanDeck();
        shuffle();
        dealFour();
+       playerScore = 0;
     }
 
 
@@ -124,6 +125,7 @@ public class Game {
                 cols.get(columnNumber).remove(size-1);
                 playerScore++;
                 lastAttemptValid = true;
+                return;
             }
         }
 
